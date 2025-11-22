@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
-import { MapPin, Home, Calendar, ArrowRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { MapPin, Home, Calendar, ArrowRight, Shield, FileCheck, Landmark, CheckCircle } from "lucide-react";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -12,40 +13,65 @@ const Projects = () => {
     {
       id: 1,
       title: "Skyline Residences",
+      tagline: "Elevated Urban Living",
       location: "Downtown District",
-      type: "High-Rise Apartments",
-      units: "180 Units",
-      completion: "Completed 2023",
+      type: "Plotted Development",
+      landSize: "45 Acres",
+      connectivity: "2 km from Metro | 5 km from Airport",
+      approvals: ["RERA", "BMRDA", "STRRPA", "E-Khata"],
       status: "Completed",
       image: project1,
-      description: "Luxury high-rise living with panoramic city views, state-of-the-art amenities, and unparalleled convenience in the heart of downtown.",
-      features: ["Infinity Pool", "Gym & Spa", "Smart Home", "24/7 Security"],
+      description: "Strategic location with approved infrastructure pipeline, positioned in a high-growth corridor with established connectivity and urban development plans.",
+      investmentLogic: "Infrastructure-led appreciation with transparent legal compliance",
+      infrastructure: "Upcoming Metro Phase 2 | IT Park Development",
+      growthIndicators: ["30% YoY area appreciation", "Major employer presence", "Planned infrastructure upgrades"],
     },
     {
       id: 2,
       title: "Paradise Villas",
+      tagline: "Nature Meets Investment",
       location: "Coastal Avenue",
-      type: "Luxury Villas",
-      units: "45 Villas",
-      completion: "Expected Q4 2024",
+      type: "Plotted Development",
+      landSize: "62 Acres",
+      connectivity: "5 km from Business Hub | Direct Highway Access",
+      approvals: ["RERA", "BMRDA", "STRRPA", "E-Khata"],
       status: "Ongoing",
       image: project2,
-      description: "Exclusive beachfront villas with private pools, landscaped gardens, and direct beach access for the ultimate tropical lifestyle.",
-      features: ["Private Pool", "Beach Access", "Garden", "Sunset Views"],
+      description: "Prime coastal location with clear zoning for residential development, offering long-term appreciation potential in an emerging growth corridor.",
+      investmentLogic: "Emerging location with infrastructure development pipeline",
+      infrastructure: "Proposed Outer Ring Road | SEZ Development",
+      growthIndicators: ["Infrastructure investments nearby", "Growing job ecosystem", "Tourism infrastructure boost"],
     },
     {
       id: 3,
       title: "Metropolitan Heights",
+      tagline: "Business District Excellence",
       location: "Business Quarter",
-      type: "Premium Penthouses",
-      units: "25 Penthouses",
-      completion: "Launch Q2 2025",
+      type: "Plotted Development",
+      landSize: "38 Acres",
+      connectivity: "Walking distance to Business District | Metro Connected",
+      approvals: ["RERA", "BMRDA", "STRRPA", "E-Khata"],
       status: "Pre-Launch",
       image: project3,
-      description: "Ultra-luxury penthouses with rooftop terraces, offering sophisticated urban living with breathtaking skyline views.",
-      features: ["Rooftop Terrace", "Smart Living", "Concierge", "Premium Finishes"],
+      description: "Premium business quarter location with all regulatory approvals in place, designed for investors seeking predictable returns in an established commercial zone.",
+      investmentLogic: "Established location with stable appreciation trajectory",
+      infrastructure: "Existing Metro Connectivity | Tech Parks",
+      growthIndicators: ["Established job ecosystem", "Rental yield potential", "Corporate housing demand"],
     },
   ];
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "Completed":
+        return "bg-green-500";
+      case "Ongoing":
+        return "bg-blue-500";
+      case "Pre-Launch":
+        return "bg-gold";
+      default:
+        return "bg-gray-500";
+    }
+  };
 
   return (
     <div className="min-h-screen pt-20">
@@ -62,19 +88,19 @@ const Projects = () => {
               Our <span className="text-gold">Projects</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Discover our portfolio of exceptional properties, each designed to redefine luxury living
+              Research-backed plotted developments with 100% legal compliance and transparent documentation
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Projects Grid */}
+      {/* Projects Listing */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {allProjects.map((project, index) => (
               <ScrollAnimation key={project.id} direction={index % 2 === 0 ? "left" : "right"}>
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-start ${
                   index % 2 === 1 ? "lg:grid-flow-dense" : ""
                 }`}>
                   {/* Image */}
@@ -86,15 +112,14 @@ const Projects = () => {
                         className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute top-4 right-4">
-                        <span className={`px-4 py-2 rounded-full text-xs font-semibold ${
-                          project.status === "Completed"
-                            ? "bg-green-500 text-white"
-                            : project.status === "Ongoing"
-                            ? "bg-blue-500 text-white"
-                            : "bg-gold text-white"
-                        }`}>
+                        <Badge className={`${getStatusColor(project.status)} text-white border-0`}>
                           {project.status}
-                        </span>
+                        </Badge>
+                      </div>
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-background/90 text-foreground border-0">
+                          {project.landSize}
+                        </Badge>
                       </div>
                     </div>
                     <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-gold/10 rounded-lg -z-10" />
@@ -104,10 +129,12 @@ const Projects = () => {
                   <div className={index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
                     <div className="space-y-6">
                       <div>
-                        <h2 className="text-4xl font-display font-bold mb-4">
+                        <h2 className="text-4xl font-display font-bold mb-2">
                           {project.title}
                         </h2>
-                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                        <p className="text-xl text-gold font-display mb-4">{project.tagline}</p>
+                        
+                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
                           <div className="flex items-center gap-2">
                             <MapPin size={16} className="text-gold" />
                             <span>{project.location}</span>
@@ -116,37 +143,65 @@ const Projects = () => {
                             <Home size={16} className="text-gold" />
                             <span>{project.type}</span>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <Calendar size={16} className="text-gold" />
-                            <span>{project.completion}</span>
-                          </div>
                         </div>
+
+                        <p className="text-muted-foreground mb-4">
+                          <strong className="text-foreground">Connectivity:</strong> {project.connectivity}
+                        </p>
                       </div>
 
                       <p className="text-lg text-muted-foreground">
                         {project.description}
                       </p>
 
+                      <div className="p-4 bg-secondary rounded-lg">
+                        <p className="font-display font-semibold text-gold mb-2">Investment Logic</p>
+                        <p className="text-muted-foreground">{project.investmentLogic}</p>
+                      </div>
+
+                      {/* Infrastructure & Growth */}
                       <div>
-                        <h3 className="text-xl font-display font-semibold mb-3">Key Features</h3>
-                        <div className="grid grid-cols-2 gap-3">
-                          {project.features.map((feature, idx) => (
-                            <div key={idx} className="flex items-center gap-2">
-                              <div className="w-2 h-2 bg-gold rounded-full" />
-                              <span className="text-muted-foreground">{feature}</span>
+                        <h3 className="text-xl font-display font-semibold mb-3">Why Invest Here?</h3>
+                        <div className="space-y-2 mb-4">
+                          <div className="flex items-start gap-2">
+                            <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                            <span className="text-muted-foreground">{project.infrastructure}</span>
+                          </div>
+                          {project.growthIndicators.map((indicator, idx) => (
+                            <div key={idx} className="flex items-start gap-2">
+                              <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                              <span className="text-muted-foreground">{indicator}</span>
                             </div>
                           ))}
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-4 pt-4">
-                        <span className="text-2xl font-display font-bold">{project.units}</span>
+                      {/* Approvals */}
+                      <div>
+                        <h3 className="text-xl font-display font-semibold mb-3">Approvals & Legal Clarity</h3>
+                        <div className="grid grid-cols-2 gap-3">
+                          {project.approvals.map((approval, idx) => (
+                            <div key={idx} className="flex items-center gap-2 p-3 bg-secondary rounded-lg border border-gold/20">
+                              <Shield className="w-5 h-5 text-gold flex-shrink-0" />
+                              <span className="font-semibold">{approval}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-3">
+                          ✓ Transparent legal and regulatory compliance
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4 border-t border-border">
                         <Link to="/contact">
                           <Button className="bg-gold hover:bg-gold-dark text-white group">
-                            Enquire Now
+                            Book Site Visit
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                           </Button>
                         </Link>
+                        <Button variant="outline" className="border-gold text-gold hover:bg-gold/10">
+                          View Details
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -157,22 +212,62 @@ const Projects = () => {
         </div>
       </section>
 
+      {/* Rycca Brand Positioning */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+                The <span className="text-gold">Rycca</span> Difference
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Every project undergoes rigorous research, legal verification, and location analysis. 
+                We don't just sell land—we create structured investment opportunities with transparent 
+                documentation, clear titles, and zero ambiguity.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="p-6 bg-background rounded-lg">
+                  <FileCheck className="w-12 h-12 text-gold mx-auto mb-4" />
+                  <h3 className="font-display font-bold mb-2">100% Compliance</h3>
+                  <p className="text-sm text-muted-foreground">All regulatory approvals in place</p>
+                </div>
+                <div className="p-6 bg-background rounded-lg">
+                  <Landmark className="w-12 h-12 text-gold mx-auto mb-4" />
+                  <h3 className="font-display font-bold mb-2">Clear Titles</h3>
+                  <p className="text-sm text-muted-foreground">Transparent legal documentation</p>
+                </div>
+                <div className="p-6 bg-background rounded-lg">
+                  <Shield className="w-12 h-12 text-gold mx-auto mb-4" />
+                  <h3 className="font-display font-bold mb-2">Zero Ambiguity</h3>
+                  <p className="text-sm text-muted-foreground">Research-backed land curation</p>
+                </div>
+              </div>
+            </div>
+          </ScrollAnimation>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-gold-dark via-gold to-gold-light">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center text-white">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-                Interested in Our Projects?
+                Ready to Explore Investment Opportunities?
               </h2>
               <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                Schedule a site visit or speak with our team to learn more about investment opportunities
+                Schedule a site visit and speak with our investment advisors
               </p>
-              <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gold">
-                  Schedule a Visit
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/contact">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gold">
+                    Book Site Visit
+                  </Button>
+                </Link>
+                <Button size="lg" className="bg-white text-gold hover:bg-white/90">
+                  Download Brochure
                 </Button>
-              </Link>
+              </div>
             </div>
           </ScrollAnimation>
         </div>

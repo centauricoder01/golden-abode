@@ -30,22 +30,22 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+1 234 567 8900", "+1 234 567 8901"],
+      details: ["+91 XXX XXX XXXX", "+91 XXX XXX XXXX"],
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@luxuryproperties.com", "sales@luxuryproperties.com"],
+      details: ["info@rycca.in", "invest@rycca.in"],
     },
     {
       icon: MapPin,
       title: "Office",
-      details: ["123 Property Lane", "Business District, City 12345"],
+      details: ["Rycca Properties", "Business District, Bangalore"],
     },
     {
       icon: Clock,
       title: "Hours",
-      details: ["Monday - Friday: 9AM - 6PM", "Saturday: 10AM - 4PM"],
+      details: ["Monday - Saturday: 9AM - 6PM", "Sunday: By Appointment"],
     },
   ];
 
@@ -207,10 +207,12 @@ const Contact = () => {
           <ScrollAnimation>
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-4xl font-display font-bold mb-6">
-                Visit Our <span className="text-gold">Office</span>
+                Visit Our <span className="text-gold">Experience Center</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                We welcome you to visit our office and experience center where you can view project models, discuss your requirements, and meet our expert team. Walk-ins are welcome, but we recommend scheduling an appointment for a personalized consultation.
+                Visit our experience center to view project masterplans, legal documentation, location analysis reports, 
+                and meet our investment advisory team. We recommend scheduling an appointment for a personalized consultation 
+                and site visit coordination.
               </p>
               <Button size="lg" className="bg-gold hover:bg-gold-dark text-white">
                 Schedule a Visit
