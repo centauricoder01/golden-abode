@@ -11,24 +11,34 @@ import project3 from "@/assets/project-3.jpg";
 const Home = () => {
   const features = [
     {
-      icon: Award,
-      title: "Premium Quality",
-      description: "Award-winning designs and world-class construction standards",
-    },
-    {
-      icon: Users,
-      title: "Expert Team",
-      description: "Decades of experience in luxury real estate development",
-    },
-    {
       icon: Building2,
-      title: "Prime Locations",
-      description: "Carefully selected locations for maximum value and lifestyle",
+      title: "Strategic Location Value",
+      description: "Carefully selected locations with infrastructure pipeline and growth indicators",
+    },
+    {
+      icon: Award,
+      title: "Intelligent Planning",
+      description: "Research-first acquisition with value-focused planning and zoning optimization",
     },
     {
       icon: TrendingUp,
-      title: "Investment Value",
-      description: "Properties designed to appreciate and deliver returns",
+      title: "Value-Per-Risk Ratio",
+      description: "Projects planned for long-term wealth creation and predictable execution",
+    },
+  ];
+
+  const trustPillars = [
+    {
+      title: "100% Compliance",
+      description: "STRRPA / BMRDA / RERA / E-Khata",
+    },
+    {
+      title: "Research-Backed Land Curation",
+      description: "Every project undergoes rigorous research and due diligence",
+    },
+    {
+      title: "Transparent Documentation",
+      description: "Clear titles with zero ambiguity in legal processes",
     },
   ];
 
@@ -61,11 +71,22 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Luxury Property"
+          {/* Background Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+            {/* Fallback to image if video not available */}
+            <img
+              src={heroImage}
+              alt="Luxury Property"
+              className="w-full h-full object-cover"
+            />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
 
@@ -82,8 +103,8 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.2 }}
               className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight"
             >
-              Building Dreams,
-              <span className="text-gold block">Creating Legacies</span>
+              Real Capital Creation
+              <span className="text-gold block">For The Intelligent Investor</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -91,7 +112,7 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.4 }}
               className="text-xl text-white/90 mb-8 font-body"
             >
-              Discover exceptional luxury properties that redefine modern living. Where elegance meets excellence.
+              Turning land into structured, research-backed wealth for generations.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -127,15 +148,15 @@ const Home = () => {
           <ScrollAnimation>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                Why Choose <span className="text-gold">Us</span>
+                The Rycca <span className="text-gold">Edge</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Experience the difference with our commitment to excellence and innovation
+                Three pillars that define our approach to intelligent wealth creation
               </p>
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             {features.map((feature, index) => (
               <ScrollAnimation key={index} delay={index * 0.1} direction="up">
                 <div className="text-center p-8 rounded-lg bg-secondary hover:shadow-xl transition-shadow duration-300">
@@ -144,6 +165,28 @@ const Home = () => {
                   </div>
                   <h3 className="text-xl font-display font-semibold mb-3">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Why Investors Trust <span className="text-gold">Rycca</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Research-backed land curation with transparent documentation
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {trustPillars.map((pillar, index) => (
+              <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                <div className="p-8 rounded-lg bg-secondary border-2 border-gold/20 hover:border-gold/40 transition-all duration-300">
+                  <h3 className="text-xl font-display font-semibold mb-3 text-gold">{pillar.title}</h3>
+                  <p className="text-muted-foreground">{pillar.description}</p>
                 </div>
               </ScrollAnimation>
             ))}
@@ -202,22 +245,51 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Brand Story Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">
+                Rycca = <span className="text-gold">Real Capital Creation</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                We believe in turning land into intelligent wealth through structured, research-driven development. 
+                Our approach combines strategic location selection, compliance-led development, and investor education 
+                to create projects that deliver generational value.
+              </p>
+              <p className="text-lg text-muted-foreground">
+                Every project is carefully curated with transparent approvals, clear titles, and zero ambiguity—ensuring 
+                your investment is built on a foundation of trust and long-term appreciation.
+              </p>
+            </div>
+          </ScrollAnimation>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-gold-dark via-gold to-gold-light">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center text-white">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-                Ready to Find Your Dream Home?
+                Start Your Wealth Journey Today
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Let's discuss how we can bring your vision to life
+                Book a consultation to explore intelligent investment opportunities
               </p>
-              <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gold">
-                  Get in Touch
-                </Button>
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/contact">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gold">
+                    Book a Consultation
+                  </Button>
+                </Link>
+                <Link to="/projects">
+                  <Button size="lg" className="bg-white text-gold hover:bg-white/90">
+                    Download Brochure
+                  </Button>
+                </Link>
+              </div>
             </div>
           </ScrollAnimation>
         </div>

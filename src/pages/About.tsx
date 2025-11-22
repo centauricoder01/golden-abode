@@ -1,37 +1,60 @@
 import { motion } from "framer-motion";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import { Target, Eye, Heart, Briefcase } from "lucide-react";
+import { Target, Shield, TrendingUp, Users, Award, CheckCircle, Search, FileCheck } from "lucide-react";
 import aboutTeam from "@/assets/about-team.jpg";
 
 const About = () => {
-  const values = [
+  const brandPillars = [
     {
       icon: Target,
-      title: "Mission",
-      description: "To create exceptional living spaces that enhance lifestyles and build lasting value for our clients.",
+      title: "Strategic Location Value",
+      description: "Infrastructure pipeline and growth indicators carefully analyzed for maximum appreciation potential",
     },
     {
-      icon: Eye,
-      title: "Vision",
-      description: "To be the most trusted name in luxury real estate development, known for innovation and excellence.",
+      icon: TrendingUp,
+      title: "Intelligent Planning",
+      description: "Research-first acquisition with value-focused zoning and land-use optimization",
     },
     {
-      icon: Heart,
-      title: "Values",
-      description: "Integrity, quality, and client satisfaction drive every decision we make and every property we build.",
-    },
-    {
-      icon: Briefcase,
-      title: "Expertise",
-      description: "Decades of combined experience in architecture, construction, and real estate development.",
+      icon: Award,
+      title: "Value-Per-Risk Ratio",
+      description: "Projects planned for long-term wealth creation with predictable execution timelines",
     },
   ];
 
-  const stats = [
-    { number: "25+", label: "Years Experience" },
-    { number: "150+", label: "Projects Completed" },
-    { number: "5000+", label: "Happy Families" },
-    { number: "50+", label: "Awards Won" },
+  const investmentMethod = [
+    {
+      step: "Step 1",
+      title: "Clarity",
+      description: "Transparent approvals, simple workflows, and clear communication at every stage",
+    },
+    {
+      step: "Step 2",
+      title: "Credibility",
+      description: "Research-led, compliance-first development with 100% legal documentation",
+    },
+    {
+      step: "Step 3",
+      title: "Compounding",
+      description: "Projects designed for long-term wealth creation and generational value",
+    },
+  ];
+
+  const investorAdvantages = [
+    { icon: Search, text: "Research-led selection" },
+    { icon: Shield, text: "100% legal compliance" },
+    { icon: FileCheck, text: "Transparent paperwork" },
+    { icon: CheckCircle, text: "Predictable execution" },
+    { icon: TrendingUp, text: "Growth-driven planning" },
+    { icon: Award, text: "Long-term appreciation mindset" },
+  ];
+
+  const whatMakesUsDifferent = [
+    "Research-first acquisition",
+    "Compliance-led development",
+    "Investor-education-led sales",
+    "Generational-value projects",
+    "Slow, thoughtful rollout for maximum quality",
   ];
 
   return (
@@ -46,36 +69,38 @@ const About = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
-              About <span className="text-gold">Us</span>
+              About <span className="text-gold">Rycca</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Building more than properties – we're building dreams, communities, and legacies that stand the test of time.
+            <p className="text-xl text-muted-foreground mb-4">
+              For Investors
+            </p>
+            <p className="text-2xl font-display">
+              Where clarity meets long-term capital growth.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Story Section */}
+      {/* Brand Value Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollAnimation direction="left">
               <div>
                 <h2 className="text-4xl font-display font-bold mb-6">
-                  Our <span className="text-gold">Story</span>
+                  Our <span className="text-gold">Vision</span>
                 </h2>
+                <p className="text-xl font-display text-foreground mb-6">
+                  To turn land into intelligent wealth through structured, research-driven development.
+                </p>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Founded over two decades ago with a vision to transform the real estate landscape, we have grown from a small family business into one of the most respected names in luxury property development.
+                    <span className="font-semibold text-gold">Rycca</span> means <span className="font-semibold">"Real Capital Creation"</span>. 
+                    This isn't just our name—it's our mission, our methodology, and our commitment to every investor who trusts us.
                   </p>
                   <p>
-                    Our journey began with a simple belief: every home should be a masterpiece, and every property should exceed expectations. This philosophy has guided us through every project, every decision, and every relationship we've built.
-                  </p>
-                  <p>
-                    Today, we stand proud as creators of some of the most sought-after properties in the region, but we remain humble and committed to the same values that started it all – quality, integrity, and unwavering dedication to our clients.
-                  </p>
-                  <p className="text-foreground font-semibold">
-                    We don't just build properties; we build homes where memories are made, where families grow, and where dreams come true.
+                    We believe land isn't just a physical asset—it's a vehicle for structured, generational wealth. Our approach 
+                    combines rigorous research, transparent compliance, and intelligent planning to transform land into lasting capital.
                   </p>
                 </div>
               </div>
@@ -85,7 +110,7 @@ const About = () => {
               <div className="relative">
                 <img
                   src={aboutTeam}
-                  alt="Our Team"
+                  alt="Rycca Team"
                   className="rounded-lg shadow-2xl w-full"
                 />
                 <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gold/10 rounded-lg -z-10" />
@@ -95,47 +120,63 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* What Makes Us Different */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                Our Core <span className="text-gold">Principles</span>
+                What Makes Us <span className="text-gold">Different</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                The foundation of everything we do
+                Five principles that define the Rycca approach
               </p>
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <ScrollAnimation key={index} delay={index * 0.1} direction="up">
-                <div className="bg-background p-8 rounded-lg hover:shadow-xl transition-all duration-300 h-full">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 text-gold mb-6">
-                    <value.icon size={32} />
+          <ScrollAnimation>
+            <div className="max-w-4xl mx-auto">
+              <div className="space-y-4">
+                {whatMakesUsDifferent.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-4 p-6 bg-background rounded-lg hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
+                      <span className="text-gold font-bold">{index + 1}</span>
+                    </div>
+                    <p className="text-lg">{item}</p>
                   </div>
-                  <h3 className="text-2xl font-display font-bold mb-4">{value.title}</h3>
-                  <p className="text-muted-foreground">{value.description}</p>
-                </div>
-              </ScrollAnimation>
-            ))}
-          </div>
+                ))}
+              </div>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-gold-dark via-gold to-gold-light">
+      {/* Brand Pillars */}
+      <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <ScrollAnimation key={index} delay={index * 0.1}>
-                <div className="text-center text-white">
-                  <div className="text-5xl md:text-6xl font-display font-bold mb-2">
-                    {stat.number}
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Brand <span className="text-gold">Pillars</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                The three foundations of every Rycca project
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {brandPillars.map((pillar, index) => (
+              <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                <div className="bg-secondary p-8 rounded-lg hover:shadow-xl transition-all duration-300 h-full">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 text-gold mb-6">
+                    <pillar.icon size={32} />
                   </div>
-                  <div className="text-lg opacity-90">{stat.label}</div>
+                  <h3 className="text-2xl font-display font-bold mb-4">{pillar.title}</h3>
+                  <p className="text-muted-foreground">{pillar.description}</p>
                 </div>
               </ScrollAnimation>
             ))}
@@ -143,19 +184,77 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Philosophy */}
+      {/* The Rycca Investment Method */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                The Rycca Investment <span className="text-gold">Method™</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Why Investors Choose Rycca
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              {investmentMethod.map((method, index) => (
+                <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                  <div className="relative bg-background p-8 rounded-lg hover:shadow-xl transition-all duration-300">
+                    <div className="absolute -top-4 left-8">
+                      <span className="inline-block px-4 py-2 bg-gold text-white font-display font-bold rounded-full">
+                        {method.step}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-display font-bold mb-4 mt-4">{method.title}</h3>
+                    <p className="text-muted-foreground">{method.description}</p>
+                  </div>
+                </ScrollAnimation>
+              ))}
+            </div>
+
+            {/* Investor Advantages Grid */}
+            <ScrollAnimation>
+              <div className="bg-background p-8 rounded-lg">
+                <h3 className="text-3xl font-display font-bold mb-8 text-center">
+                  Your Investment, <span className="text-gold">Upgraded</span>
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {investorAdvantages.map((advantage, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-4 p-4 bg-secondary rounded-lg hover:bg-gold/5 transition-all duration-300"
+                    >
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
+                        <advantage.icon className="w-5 h-5 text-gold" />
+                      </div>
+                      <p className="font-medium">{advantage.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">
-                Meet Our <span className="text-gold">Expertise</span>
+                Leadership & <span className="text-gold">Team</span>
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Our team brings together architects, engineers, designers, and real estate experts who share a passion for excellence. With diverse backgrounds and specialized skills, we collaborate to ensure every project exceeds expectations.
+                Our team brings together land acquisition specialists, legal experts, urban planners, and financial 
+                analysts who share a passion for creating structured, research-backed investment opportunities.
               </p>
               <p className="text-lg text-foreground font-semibold">
-                "Excellence is not a destination, it's a continuous journey. We are committed to evolving, innovating, and delivering beyond expectations."
+                "Real Capital Creation isn't just about buying land—it's about transforming it into intelligent, 
+                generational wealth through research, compliance, and strategic planning."
               </p>
             </div>
           </ScrollAnimation>

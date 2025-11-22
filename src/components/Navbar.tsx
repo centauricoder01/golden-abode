@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-display font-bold text-gold">Luxury</span>
+            <span className="text-2xl font-display font-bold text-gold">Rycca</span>
             <span className="text-2xl font-display font-light">Properties</span>
           </Link>
 
