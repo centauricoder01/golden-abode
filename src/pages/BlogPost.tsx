@@ -168,11 +168,11 @@ const BlogPost = () => {
                 {/* Introduction Section */}
                 <div className="prose prose-lg max-w-none
                   prose-headings:font-display prose-headings:font-bold prose-headings:text-foreground
-                  prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:text-gold
-                  prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6
-                  prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-8 prose-p:text-lg
-                  prose-ul:my-8 prose-ul:text-muted-foreground
-                  prose-li:mb-3 prose-li:text-lg
+                  prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-10 prose-h2:text-gold
+                  prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-8
+                  prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-10 prose-p:text-lg
+                  prose-ul:my-10 prose-ul:text-muted-foreground
+                  prose-li:mb-4 prose-li:text-lg prose-li:leading-relaxed
                   prose-strong:text-foreground prose-strong:font-semibold">
                   <h2>Introduction</h2>
                   <p>Bangalore's real estate market continues to be one of India's most dynamic and promising sectors. With the city's evolution as a global tech hub and the ongoing infrastructure boom, 2025 is shaping up to be a landmark year for property investors.</p>
@@ -202,11 +202,11 @@ const BlogPost = () => {
                 {/* Growth Corridors Section */}
                 <div className="prose prose-lg max-w-none
                   prose-headings:font-display prose-headings:font-bold prose-headings:text-foreground
-                  prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:text-gold
-                  prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6
-                  prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-8 prose-p:text-lg
-                  prose-ul:my-8 prose-ul:text-muted-foreground
-                  prose-li:mb-3 prose-li:text-lg
+                  prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-10 prose-h2:text-gold
+                  prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-8
+                  prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-10 prose-p:text-lg
+                  prose-ul:my-10 prose-ul:text-muted-foreground
+                  prose-li:mb-4 prose-li:text-lg prose-li:leading-relaxed
                   prose-strong:text-foreground prose-strong:font-semibold">
                   <h2>Key Growth Corridors</h2>
                   <p>Our data indicates three primary growth corridors for 2025:</p>
@@ -235,11 +235,11 @@ const BlogPost = () => {
                 {/* Investment & Conclusion Section */}
                 <div className="prose prose-lg max-w-none
                   prose-headings:font-display prose-headings:font-bold prose-headings:text-foreground
-                  prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:text-gold
-                  prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6
-                  prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-8 prose-p:text-lg
-                  prose-ul:my-8 prose-ul:text-muted-foreground
-                  prose-li:mb-3 prose-li:text-lg
+                  prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-10 prose-h2:text-gold
+                  prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-8
+                  prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-10 prose-p:text-lg
+                  prose-ul:my-10 prose-ul:text-muted-foreground
+                  prose-li:mb-4 prose-li:text-lg prose-li:leading-relaxed
                   prose-strong:text-foreground prose-strong:font-semibold">
                   <h2>Investment Opportunities</h2>
                   <p>For investors looking to capitalize on Bangalore's growth, the key is to focus on:</p>
