@@ -13,6 +13,13 @@ interface BlogPost {
   image: string;
 }
 
+import blogBangaloreGrowth from "@/assets/blog-bangalore-growth.jpg";
+import blogReraGuide from "@/assets/blog-rera-guide.jpg";
+import blogNorthBangalore from "@/assets/blog-north-bangalore.jpg";
+import blogPlotVsApartment from "@/assets/blog-plot-vs-apartment.jpg";
+import blogRyccaMethod from "@/assets/blog-rycca-method.jpg";
+import blogTownships from "@/assets/blog-townships.jpg";
+
 const blogPosts: BlogPost[] = [
   {
     slug: "bangalore-real-estate-growth-2025",
@@ -21,7 +28,7 @@ const blogPosts: BlogPost[] = [
     date: "March 15, 2024",
     readTime: "5 min read",
     category: "Market Insights",
-    image: "/api/placeholder/800/500",
+    image: blogBangaloreGrowth,
   },
   {
     slug: "rera-approved-projects-guide",
@@ -30,7 +37,7 @@ const blogPosts: BlogPost[] = [
     date: "March 10, 2024",
     readTime: "7 min read",
     category: "Investment Guide",
-    image: "/api/placeholder/800/500",
+    image: blogReraGuide,
   },
   {
     slug: "north-bangalore-infrastructure-boom",
@@ -39,7 +46,7 @@ const blogPosts: BlogPost[] = [
     date: "March 5, 2024",
     readTime: "6 min read",
     category: "Location Spotlight",
-    image: "/api/placeholder/800/500",
+    image: blogNorthBangalore,
   },
   {
     slug: "plot-investment-vs-apartments",
@@ -48,7 +55,7 @@ const blogPosts: BlogPost[] = [
     date: "February 28, 2024",
     readTime: "8 min read",
     category: "Investment Strategy",
-    image: "/api/placeholder/800/500",
+    image: blogPlotVsApartment,
   },
   {
     slug: "rycca-edge-investment-method",
@@ -57,7 +64,7 @@ const blogPosts: BlogPost[] = [
     date: "February 20, 2024",
     readTime: "10 min read",
     category: "Company Insights",
-    image: "/api/placeholder/800/500",
+    image: blogRyccaMethod,
   },
   {
     slug: "bmrda-approved-townships",
@@ -66,7 +73,7 @@ const blogPosts: BlogPost[] = [
     date: "February 15, 2024",
     readTime: "6 min read",
     category: "Development Trends",
-    image: "/api/placeholder/800/500",
+    image: blogTownships,
   },
 ];
 
