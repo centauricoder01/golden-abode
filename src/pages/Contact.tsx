@@ -76,8 +76,8 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <ScrollAnimation direction="left">
-              <div className="bg-secondary p-8 rounded-lg shadow-lg">
-                <h2 className="text-3xl font-display font-bold mb-6">
+              <div className="bg-secondary p-4 sm:p-8 rounded-lg shadow-lg">
+                <h2 className="text-2xl sm:text-3xl font-display font-bold mb-6">
                   Send us a <span className="text-gold">Message</span>
                 </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
