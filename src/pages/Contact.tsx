@@ -50,7 +50,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -147,7 +147,7 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full bg-gold hover:bg-gold-dark text-white">
+                  <Button type="submit" size="lg" className="w-full bg-gold hover:bg-gold-dark text-white min-w-[120px]">
                     Send Message
                   </Button>
                 </form>
@@ -214,7 +214,7 @@ const Contact = () => {
                 and meet our investment advisory team. We recommend scheduling an appointment for a personalized consultation 
                 and site visit coordination.
               </p>
-              <Button size="lg" className="bg-gold hover:bg-gold-dark text-white">
+              <Button size="lg" className="bg-gold hover:bg-gold-dark text-white min-w-[160px]">
                 Schedule a Visit
               </Button>
             </div>

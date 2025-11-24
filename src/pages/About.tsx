@@ -58,7 +58,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,13 +107,13 @@ const About = () => {
             </ScrollAnimation>
 
             <ScrollAnimation direction="right">
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <img
                   src={aboutTeam}
                   alt="Rycca Team"
                   className="rounded-lg shadow-2xl w-full"
                 />
-                <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gold/10 rounded-lg -z-10" />
+                <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gold/10 rounded-lg -z-10 hidden sm:block" />
               </div>
             </ScrollAnimation>
           </div>

@@ -74,7 +74,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,7 +104,7 @@ const Projects = () => {
                   index % 2 === 1 ? "lg:grid-flow-dense" : ""
                 }`}>
                   {/* Image */}
-                  <div className={`relative group ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                  <div className={`relative group ${index % 2 === 1 ? "lg:col-start-2" : ""} overflow-hidden`}>
                     <div className="relative overflow-hidden rounded-lg shadow-2xl">
                       <img
                         src={project.image}
@@ -122,7 +122,7 @@ const Projects = () => {
                         </Badge>
                       </div>
                     </div>
-                    <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-gold/10 rounded-lg -z-10" />
+                    <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-gold/10 rounded-lg -z-10 hidden md:block" />
                   </div>
 
                   {/* Content */}
@@ -193,13 +193,13 @@ const Projects = () => {
                       </div>
 
                       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4 border-t border-border">
-                        <Link to="/contact">
-                          <Button className="bg-gold hover:bg-gold-dark text-white group">
+                        <Link to="/contact" className="w-full sm:w-auto">
+                          <Button className="bg-gold hover:bg-gold-dark text-white group w-full sm:w-auto">
                             Book Site Visit
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                           </Button>
                         </Link>
-                        <Button variant="outline" className="border-gold text-gold hover:bg-gold/10">
+                        <Button variant="outline" className="border-gold text-gold hover:bg-gold/10 w-full sm:w-auto">
                           View Details
                         </Button>
                       </div>
@@ -259,12 +259,12 @@ const Projects = () => {
                 Schedule a site visit and speak with our investment advisors
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gold">
+                <Link to="/contact" className="w-full sm:w-auto">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gold w-full sm:w-auto">
                     Book Site Visit
                   </Button>
                 </Link>
-                <Button size="lg" className="bg-white text-gold hover:bg-white/90">
+                <Button size="lg" className="bg-white text-gold hover:bg-white/90 w-full sm:w-auto">
                   Download Brochure
                 </Button>
               </div>
