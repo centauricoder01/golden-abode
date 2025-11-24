@@ -184,7 +184,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {trustPillars.map((pillar, index) => (
               <ScrollAnimation key={index} delay={index * 0.1} direction="up">
-                <div className="p-8 rounded-lg bg-secondary border-2 border-gold/20 hover:border-gold/40 transition-all duration-300">
+                <div className="h-full p-8 rounded-lg bg-secondary border-2 border-gold/20 hover:border-gold/40 transition-all duration-300">
                   <h3 className="text-xl font-display font-semibold mb-3 text-gold">{pillar.title}</h3>
                   <p className="text-muted-foreground">{pillar.description}</p>
                 </div>
