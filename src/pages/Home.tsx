@@ -79,7 +79,7 @@ const Home = () => {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
             {/* Fallback to image if video not available */}
             <img
               src={heroImage}
@@ -127,7 +127,7 @@ const Home = () => {
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-foreground">
+                <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-foreground">
                   Contact Us
                 </Button>
               </Link>
@@ -280,7 +280,7 @@ const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gold">
+                  <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-gold">
                     Book a Consultation
                   </Button>
                 </Link>
