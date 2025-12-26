@@ -186,15 +186,34 @@ const Contact = () => {
                   ))}
                 </div>
 
-                {/* Map Placeholder */}
-                <div className="bg-secondary rounded-lg overflow-hidden shadow-lg h-64">
-                  <div className="w-full h-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center">
-                    <div className="text-center">
-                      <MapPin className="w-12 h-12 text-gold mx-auto mb-2" />
-                      <p className="text-muted-foreground">Interactive Map</p>
+                {/* Google Map */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                  className="relative group"
+                >
+                  <div className="absolute -inset-1 bg-gradient-to-r from-gold/50 via-gold/30 to-gold/50 rounded-xl blur-sm opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative bg-secondary rounded-xl overflow-hidden shadow-xl">
+                    <div className="aspect-[4/3] sm:aspect-video w-full">
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d225196.1459476825!2d77.6309395!3d12.9539974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1741f1245edf%3A0x21ec0fff206c4099!2sRYCCA!5e1!3m2!1sen!2sin!4v1766772052985!5m2!1sen!2sin"
+                        className="w-full h-full border-0"
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Rycca Ventures Location"
+                      />
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/80 to-transparent p-3 sm:p-4">
+                      <div className="flex items-center gap-2 text-sm text-foreground">
+                        <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+                        <span className="truncate">Rycca Ventures, Sahakarnagar, Bangalore</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </ScrollAnimation>
           </div>
