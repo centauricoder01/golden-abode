@@ -1,46 +1,30 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Thank you for contacting us! We'll get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const contactInfo = [
     {
       icon: Phone,
       title: "Phone",
       details: ["+91 73496 99993"],
+      action: "tel:+917349699993",
+      actionText: "Call Now",
     },
     {
       icon: Mail,
       title: "Email",
       details: ["Ventures@rycca.in"],
+      action: "mailto:Ventures@rycca.in",
+      actionText: "Send Email",
     },
     {
       icon: MapPin,
       title: "Office",
       details: ["A002 Sai Meadows, 1st Main Road", "Block C, CQAL Layout, Sahakarnagar", "Bangalore 560 092"],
+      action: "https://maps.google.com/?q=RYCCA+Sahakarnagar+Bangalore",
+      actionText: "Get Directions",
     },
     {
       icon: Clock,
@@ -64,129 +48,67 @@ const Contact = () => {
               Get in <span className="text-gold">Touch</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              Have questions? We'd love to hear from you. Reach out to us through any of the channels below.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Form and Info */}
+      {/* Contact Info Cards */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <ScrollAnimation direction="left">
-              <div className="bg-secondary p-4 sm:p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl sm:text-3xl font-display font-bold mb-6">
-                  Send us a <span className="text-gold">Message</span>
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Name *</label>
-                      <Input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        placeholder="Your name"
-                        className="bg-background"
-                      />
+          <ScrollAnimation>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-display font-bold mb-4">
+                Contact <span className="text-gold">Information</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Our team is ready to assist you with all your property investment needs.
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {contactInfo.map((info, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group"
+              >
+                <div className="relative h-full">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-gold/30 to-gold/10 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative h-full bg-secondary rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                    <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                      <info.icon className="w-7 h-7 text-gold" />
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Email *</label>
-                      <Input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        placeholder="your@email.com"
-                        className="bg-background"
-                      />
+                    <h3 className="font-display font-bold text-xl mb-3">{info.title}</h3>
+                    <div className="flex-grow">
+                      {info.details.map((detail, idx) => (
+                        <p key={idx} className="text-muted-foreground text-sm leading-relaxed">
+                          {detail}
+                        </p>
+                      ))}
                     </div>
+                    {info.action && (
+                      <a
+                        href={info.action}
+                        target={info.action.startsWith("http") ? "_blank" : undefined}
+                        rel={info.action.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="inline-flex items-center gap-2 text-gold hover:text-gold-dark transition-colors text-sm font-medium mt-4 pt-4 border-t border-border"
+                      >
+                        {info.actionText}
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </a>
+                    )}
                   </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Phone</label>
-                      <Input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+1 234 567 8900"
-                        className="bg-background"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Subject *</label>
-                      <Input
-                        type="text"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        placeholder="How can we help?"
-                        className="bg-background"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Message *</label>
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      placeholder="Tell us more about your requirements..."
-                      className="bg-background resize-none"
-                    />
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full bg-gold hover:bg-gold-dark text-white min-w-[120px]">
-                    Send Message
-                  </Button>
-                </form>
-              </div>
-            </ScrollAnimation>
-
-            {/* Contact Info */}
-            <ScrollAnimation direction="right">
-              <div className="space-y-8">
-                <div>
-                  <h2 className="text-3xl font-display font-bold mb-6">
-                    Contact <span className="text-gold">Information</span>
-                  </h2>
-                  <p className="text-muted-foreground mb-8">
-                    Reach out to us through any of the following channels. Our team is ready to assist you with all your property needs.
-                  </p>
                 </div>
-
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-start gap-4 p-6 bg-secondary rounded-lg">
-                      <div className="flex-shrink-0">
-                        <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center">
-                          <info.icon className="w-6 h-6 text-gold" />
-                        </div>
-                      </div>
-                      <div>
-                        <h3 className="font-display font-semibold text-lg mb-2">{info.title}</h3>
-                        {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-muted-foreground">
-                            {detail}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollAnimation>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
