@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import { Target, Shield, TrendingUp, Users, Award, CheckCircle, Search, FileCheck } from "lucide-react";
+import { Target, Shield, TrendingUp, Users, Award, CheckCircle, Search, FileCheck, Building2, Home, Calendar } from "lucide-react";
 import aboutTeam from "@/assets/about-team.jpg";
 
 const About = () => {
@@ -57,6 +57,29 @@ const About = () => {
     "Slow, thoughtful rollout for maximum quality",
   ];
 
+  const milestones = [
+    {
+      year: "1992",
+      title: "Our Roots",
+      description: "The founder's journey in real estate began with properties in BTM Layout, Bangalore.",
+    },
+    {
+      year: "2013",
+      title: "First Developer Project",
+      description: "Launched our first project as a developer in Nelamangala through a joint venture. Today, 20+ happy families reside there with a steady ROI of 20.94%.",
+    },
+    {
+      year: "2020",
+      title: "Premium Layout",
+      description: "Developed a premium 1-acre residential layout featuring doubly reinforced concrete roads, delivering a strong ROI of 23.33%.",
+    },
+    {
+      year: "2025",
+      title: "Silicon Fairworth",
+      description: "Launched Rycca Silicon Fairworth with 45 plots registered since April 2025 and 30 more bookings in record time.",
+    },
+  ];
+
   return (
     <div className="min-h-screen pt-20 overflow-x-hidden">
       {/* Hero Section */}
@@ -69,7 +92,7 @@ const About = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
-              About <span className="text-gold">Rycca</span>
+              About <span className="text-gold">Rycca Ventures</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-4">
               For Investors
@@ -91,16 +114,14 @@ const About = () => {
                   Our <span className="text-gold">Vision</span>
                 </h2>
                 <p className="text-xl font-display text-foreground mb-6">
-                  To turn land into intelligent wealth through structured, research-driven development.
+                  To cater to 5,000 house owners over the next five to ten years and become a leader in delivering hassle-free, high-quality real estate developments.
                 </p>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    <span className="font-semibold text-gold">Rycca</span> means <span className="font-semibold">"Real Capital Creation"</span>. 
-                    This isn't just our name—it's our mission, our methodology, and our commitment to every investor who trusts us.
+                    <span className="font-semibold text-gold">Rycca Ventures</span> is positioned as a forward-thinking real estate development firm, specializing in strategically located projects that offer maximum value to investors and end-users alike.
                   </p>
                   <p>
-                    We believe land isn't just a physical asset—it's a vehicle for structured, generational wealth. Our approach 
-                    combines rigorous research, transparent compliance, and intelligent planning to transform land into lasting capital.
+                    Our focus is on delivering top-class infrastructure, ensuring transparent, hassle-free ownership experiences, and creating developments that stand the test of time. We are a modern, premium, and trustworthy brand in the North Bangalore real estate market.
                   </p>
                 </div>
               </div>
@@ -114,6 +135,82 @@ const About = () => {
                   className="rounded-lg shadow-2xl w-full"
                 />
                 <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gold/10 rounded-lg -z-10 hidden sm:block" />
+              </div>
+            </ScrollAnimation>
+          </div>
+        </div>
+      </section>
+
+      {/* Company History/Milestones */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Our <span className="text-gold">Journey</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Over three decades of building trust and creating value
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6">
+              {milestones.map((milestone, index) => (
+                <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                  <div className="flex gap-6 p-6 bg-background rounded-lg hover:shadow-lg transition-all duration-300">
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center">
+                        <span className="text-gold font-bold text-lg">{milestone.year}</span>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-display font-bold mb-2">{milestone.title}</h3>
+                      <p className="text-muted-foreground">{milestone.description}</p>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Track Record Stats */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Our <span className="text-gold">Track Record</span>
+              </h2>
+            </div>
+          </ScrollAnimation>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <ScrollAnimation delay={0.1} direction="up">
+              <div className="text-center p-6 bg-secondary rounded-lg">
+                <div className="text-4xl md:text-5xl font-display font-bold text-gold mb-2">400+</div>
+                <p className="text-muted-foreground">Happy Families</p>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation delay={0.2} direction="up">
+              <div className="text-center p-6 bg-secondary rounded-lg">
+                <div className="text-4xl md:text-5xl font-display font-bold text-gold mb-2">30+</div>
+                <p className="text-muted-foreground">Years Experience</p>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation delay={0.3} direction="up">
+              <div className="text-center p-6 bg-secondary rounded-lg">
+                <div className="text-4xl md:text-5xl font-display font-bold text-gold mb-2">24%+</div>
+                <p className="text-muted-foreground">Avg. ROI Delivered</p>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation delay={0.4} direction="up">
+              <div className="text-center p-6 bg-secondary rounded-lg">
+                <div className="text-4xl md:text-5xl font-display font-bold text-gold mb-2">100%</div>
+                <p className="text-muted-foreground">A-Khata Projects</p>
               </div>
             </ScrollAnimation>
           </div>
@@ -240,21 +337,19 @@ const About = () => {
         </div>
       </section>
 
-      {/* Leadership Section */}
+      {/* Our Clients */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">
-                Leadership & <span className="text-gold">Team</span>
+                Our <span className="text-gold">Clients</span>
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Our team brings together land acquisition specialists, legal experts, urban planners, and financial 
-                analysts who share a passion for creating structured, research-backed investment opportunities.
+                We have proudly sold plots to more than 400 happy families, including doctors, businessmen, and NRIs — many of whom are repeat customers purchasing at least one plot in every project we develop.
               </p>
               <p className="text-lg text-foreground font-semibold">
-                "Real Capital Creation isn't just about buying land—it's about transforming it into intelligent, 
-                generational wealth through research, compliance, and strategic planning."
+                "Our focus remains on quality, strategic location advantage, strict compliance with government regulations, and delivering true value for money."
               </p>
             </div>
           </ScrollAnimation>

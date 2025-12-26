@@ -30,17 +30,17 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+91 XXX XXX XXXX", "+91 XXX XXX XXXX"],
+      details: ["+91 73496 99993"],
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@rycca.in", "invest@rycca.in"],
+      details: ["Ventures@rycca.in"],
     },
     {
       icon: MapPin,
       title: "Office",
-      details: ["Rycca Properties", "Business District, Bangalore"],
+      details: ["A002 Sai Meadows, 1st Main Road", "Block C, CQAL Layout, Sahakarnagar", "Bangalore 560 092"],
     },
     {
       icon: Clock,
