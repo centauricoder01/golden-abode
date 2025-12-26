@@ -185,38 +185,89 @@ const Contact = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </div>
+      </section>
 
-                {/* Google Map */}
+      {/* Full Width Map Section */}
+      <section className="py-16 bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-10">
+              <h2 className="text-3xl sm:text-4xl font-display font-bold mb-4">
+                Find Us on the <span className="text-gold">Map</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Visit our office in Sahakarnagar, Bangalore for a personalized consultation
+              </p>
+            </div>
+          </ScrollAnimation>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="relative group"
+          >
+            {/* Glowing border effect */}
+            <div className="absolute -inset-2 bg-gradient-to-r from-gold/40 via-gold/60 to-gold/40 rounded-2xl blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-700" />
+            
+            <div className="relative bg-background rounded-2xl overflow-hidden shadow-2xl">
+              {/* Map Container */}
+              <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px]">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d225196.1459476825!2d77.6309395!3d12.9539974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1741f1245edf%3A0x21ec0fff206c4099!2sRYCCA!5e1!3m2!1sen!2sin!4v1766772052985!5m2!1sen!2sin"
+                  className="absolute inset-0 w-full h-full border-0"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Rycca Ventures Location"
+                />
+                
+                {/* Overlay Card */}
                 <motion.div 
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
                   viewport={{ once: true }}
-                  className="relative group"
+                  className="absolute top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8 z-10"
                 >
-                  <div className="absolute -inset-1 bg-gradient-to-r from-gold/50 via-gold/30 to-gold/50 rounded-xl blur-sm opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative bg-secondary rounded-xl overflow-hidden shadow-xl">
-                    <div className="aspect-[4/3] sm:aspect-video w-full">
-                      <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d225196.1459476825!2d77.6309395!3d12.9539974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1741f1245edf%3A0x21ec0fff206c4099!2sRYCCA!5e1!3m2!1sen!2sin!4v1766772052985!5m2!1sen!2sin"
-                        className="w-full h-full border-0"
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="Rycca Ventures Location"
-                      />
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/80 to-transparent p-3 sm:p-4">
-                      <div className="flex items-center gap-2 text-sm text-foreground">
-                        <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
-                        <span className="truncate">Rycca Ventures, Sahakarnagar, Bangalore</span>
+                  <div className="bg-background/95 backdrop-blur-sm rounded-xl shadow-xl p-4 sm:p-6 max-w-xs sm:max-w-sm border border-gold/20">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                        <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
                       </div>
+                      <div>
+                        <h3 className="font-display font-bold text-base sm:text-lg text-foreground">Rycca Ventures</h3>
+                        <p className="text-xs sm:text-sm text-gold">Head Office</p>
+                      </div>
+                    </div>
+                    <div className="space-y-2 text-xs sm:text-sm text-muted-foreground">
+                      <p>A002 Sai Meadows, 1st Main Road</p>
+                      <p>Block C, CQAL Layout, Sahakarnagar</p>
+                      <p>Bangalore 560 092</p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-border">
+                      <a 
+                        href="https://maps.google.com/?q=RYCCA+Sahakarnagar+Bangalore" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-gold hover:text-gold-dark transition-colors text-xs sm:text-sm font-medium"
+                      >
+                        Get Directions
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </motion.div>
               </div>
-            </ScrollAnimation>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
