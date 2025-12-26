@@ -16,9 +16,6 @@ interface BlogPost {
 import blogBangaloreGrowth from "@/assets/blog-bangalore-growth.jpg";
 import blogReraGuide from "@/assets/blog-rera-guide.jpg";
 import blogNorthBangalore from "@/assets/blog-north-bangalore.jpg";
-import blogPlotVsApartment from "@/assets/blog-plot-vs-apartment.jpg";
-import blogRyccaMethod from "@/assets/blog-rycca-method.jpg";
-import blogTownships from "@/assets/blog-townships.jpg";
 
 const blogPosts: BlogPost[] = [
   {
@@ -47,33 +44,6 @@ const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     category: "Location Spotlight",
     image: blogNorthBangalore,
-  },
-  {
-    slug: "plot-investment-vs-apartments",
-    title: "Plot Investment vs. Apartments: Which Delivers Better Returns?",
-    excerpt: "A detailed comparison of investment strategies, returns, and long-term appreciation potential in Bangalore's evolving real estate market.",
-    date: "February 28, 2024",
-    readTime: "8 min read",
-    category: "Investment Strategy",
-    image: blogPlotVsApartment,
-  },
-  {
-    slug: "rycca-edge-investment-method",
-    title: "The Rycca Edge: Our Data-Driven Investment Method Explained",
-    excerpt: "Go behind the scenes of our proprietary investment methodology that has delivered consistent 30%+ annual returns for our investors.",
-    date: "February 20, 2024",
-    readTime: "10 min read",
-    category: "Company Insights",
-    image: blogRyccaMethod,
-  },
-  {
-    slug: "bmrda-approved-townships",
-    title: "BMRDA Approved Townships: The Future of Planned Living",
-    excerpt: "Why master-planned townships are reshaping Bangalore's residential landscape and what it means for property investors.",
-    date: "February 15, 2024",
-    readTime: "6 min read",
-    category: "Development Trends",
-    image: blogTownships,
   },
 ];
 
