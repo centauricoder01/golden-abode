@@ -45,24 +45,24 @@ const Home = () => {
   const projects = [
     {
       id: 1,
-      title: "Skyline Residences",
-      location: "Downtown District",
+      title: "Rycca Silicon Fairworth",
+      location: "Doddaballapura, Bangalore",
       image: project1,
-      status: "Completed",
+      status: "Now Selling",
     },
     {
       id: 2,
-      title: "Paradise Villas",
-      location: "Coastal Avenue",
+      title: "Nelamangala Layout",
+      location: "Nelamangala, Bangalore",
       image: project2,
-      status: "Ongoing",
+      status: "Completed",
     },
     {
       id: 3,
-      title: "Metropolitan Heights",
-      location: "Business Quarter",
+      title: "Premium Layout",
+      location: "North Bangalore",
       image: project3,
-      status: "Pre-Launch",
+      status: "Completed",
     },
   ];
 

@@ -9,11 +9,11 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <span className="text-xl font-display font-bold text-gold">Luxury</span>
-              <span className="text-xl font-display font-light">Properties</span>
+              <span className="text-xl font-display font-bold text-gold">Rycca</span>
+              <span className="text-xl font-display font-light">Ventures</span>
             </div>
             <p className="text-muted-foreground text-sm">
-              Building dreams, creating legacies. Your vision, our expertise.
+              Real Capital Creation. Turning land into structured, research-backed wealth for generations.
             </p>
           </div>
 
@@ -51,16 +51,16 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-gold mt-1 flex-shrink-0" />
                 <span className="text-muted-foreground text-sm">
-                  123 Property Lane, Business District, City 12345
+                  A002 Sai Meadows, 1st Main Road, Block C, CQAL Layout, Sahakarnagar, Bangalore 560 092
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-gold flex-shrink-0" />
-                <span className="text-muted-foreground text-sm">+1 234 567 8900</span>
+                <span className="text-muted-foreground text-sm">+91 73496 99993</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-gold flex-shrink-0" />
-                <span className="text-muted-foreground text-sm">info@luxuryproperties.com</span>
+                <span className="text-muted-foreground text-sm">Ventures@rycca.in</span>
               </li>
             </ul>
           </div>
@@ -93,7 +93,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Luxury Properties. All rights reserved.
+            © {new Date().getFullYear()} Rycca Ventures. All rights reserved.
           </p>
         </div>
       </div>
