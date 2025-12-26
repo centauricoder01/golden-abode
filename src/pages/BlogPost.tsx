@@ -5,6 +5,30 @@ import { Card, CardContent } from "@/components/ui/card";
 import heroBlogImage from "@/assets/blog-bangalore-growth.jpg";
 import metroInfraImage from "@/assets/blog-metro-infrastructure.jpg";
 import investmentGrowthImage from "@/assets/blog-investment-growth.jpg";
+import blogReraGuide from "@/assets/blog-rera-guide.jpg";
+import blogNorthBangalore from "@/assets/blog-north-bangalore.jpg";
+
+// Related posts data with proper images
+const relatedPosts = [
+  {
+    slug: "rera-approved-projects-guide",
+    title: "Why RERA Approval Matters: A Complete Investor Guide",
+    excerpt: "Understanding RERA compliance and how it protects your investment.",
+    image: blogReraGuide,
+  },
+  {
+    slug: "north-bangalore-infrastructure-boom",
+    title: "North Bangalore's Infrastructure Boom",
+    excerpt: "Explore why North Bangalore is witnessing unprecedented growth.",
+    image: blogNorthBangalore,
+  },
+  {
+    slug: "bangalore-real-estate-growth-2025",
+    title: "Bangalore Real Estate: The Growth Story of 2025",
+    excerpt: "Discover why Bangalore continues to be India's top investment destination.",
+    image: heroBlogImage,
+  },
+];
 
 // Sample blog data - in a real app, this would come from an API or CMS
 const blogContent: Record<string, any> = {
@@ -284,16 +308,16 @@ const BlogPost = () => {
                 <p className="text-muted-foreground text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
                   Discover how Rycca's data-driven approach can help you build wealth through strategic real estate investments
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
                   <Link
                     to="/projects"
-                    className="px-10 py-4 bg-gold text-white rounded-md hover:bg-gold/90 transition-colors font-semibold text-lg"
+                    className="w-full sm:w-auto px-8 sm:px-10 py-4 bg-gold text-white rounded-md hover:bg-gold/90 transition-colors font-semibold text-lg text-center"
                   >
                     View Projects
                   </Link>
                   <Link
                     to="/contact"
-                    className="px-10 py-4 border-2 border-gold text-gold rounded-md hover:bg-gold/10 transition-colors font-semibold text-lg"
+                    className="w-full sm:w-auto px-8 sm:px-10 py-4 border-2 border-gold text-gold rounded-md hover:bg-gold/10 transition-colors font-semibold text-lg text-center"
                   >
                     Schedule Consultation
                   </Link>
@@ -308,30 +332,33 @@ const BlogPost = () => {
       <section className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <ScrollAnimation direction="up">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-center mb-12 sm:mb-16">
               Related Articles
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {["rera-approved-projects-guide", "north-bangalore-infrastructure-boom", "rycca-edge-investment-method"].map((relatedSlug) => (
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+              {relatedPosts
+                .filter((related) => related.slug !== slug)
+                .slice(0, 3)
+                .map((related) => (
                 <Link
-                  key={relatedSlug}
-                  to={`/blog/${relatedSlug}`}
+                  key={related.slug}
+                  to={`/blog/${related.slug}`}
                   className="group"
                 >
                   <Card className="h-full hover:shadow-xl transition-all duration-300 border-border hover:border-gold/50">
-                    <div className="relative h-56 overflow-hidden bg-muted">
+                    <div className="relative h-48 sm:h-56 overflow-hidden bg-muted rounded-t-lg">
                       <img
-                        src="/api/placeholder/400/300"
-                        alt="Related post"
+                        src={related.image}
+                        alt={related.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
-                    <CardContent className="p-6">
-                      <h3 className="font-display font-bold text-xl group-hover:text-gold transition-colors mb-3">
-                        {relatedSlug.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+                    <CardContent className="p-4 sm:p-6">
+                      <h3 className="font-display font-bold text-lg sm:text-xl group-hover:text-gold transition-colors mb-2 sm:mb-3">
+                        {related.title}
                       </h3>
-                      <p className="text-base text-muted-foreground leading-relaxed">
-                        Discover more insights about Bangalore real estate and investment strategies...
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        {related.excerpt}
                       </p>
                     </CardContent>
                   </Card>
