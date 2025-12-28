@@ -45,24 +45,27 @@ const Home = () => {
   const projects = [
     {
       id: 1,
-      title: "Rycca Silicon Fairworth",
+      title: "Silicon Fairworth – Phase 1",
       location: "Doddaballapura, Bangalore",
       image: project1,
       status: "Now Selling",
+      isBlurred: false,
     },
     {
       id: 2,
-      title: "Nelamangala Layout",
-      location: "Nelamangala, Bangalore",
+      title: "Silicon Fairworth – Phase 2",
+      location: "Doddaballapura, Bangalore",
       image: project2,
-      status: "Completed",
+      status: "Coming Soon",
+      isBlurred: true,
     },
     {
       id: 3,
-      title: "Premium Layout",
+      title: "Upcoming Project",
       location: "North Bangalore",
       image: project3,
-      status: "Completed",
+      status: "Coming Soon",
+      isBlurred: true,
     },
   ];
 
@@ -103,8 +106,8 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.2 }}
               className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight"
             >
-              Real Capital Creation
-              <span className="text-gold block">For The Intelligent Investor</span>
+              Building Legacy
+              <span className="text-gold block">Through Land</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -112,7 +115,7 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.4 }}
               className="text-xl text-white/90 mb-8 font-body"
             >
-              Turning land into structured, research-backed wealth for generations.
+              Emotion-driven land investments for future-ready wealth creation.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -194,6 +197,34 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Brand Philosophy Divider - RYCCA = Real Capital Creation */}
+      <section className="py-16 bg-gradient-to-r from-gold-dark via-gold to-gold-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center text-white">
+              <motion.h2 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-6xl font-display font-bold"
+              >
+                RYCCA = <span className="underline decoration-4 underline-offset-8">Real Capital Creation</span>
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="mt-6 text-xl opacity-90 max-w-2xl mx-auto"
+              >
+                Turning land into structured, research-backed wealth for generations.
+              </motion.p>
+            </div>
+          </ScrollAnimation>
+        </div>
+      </section>
+
       {/* Featured Projects */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -213,14 +244,27 @@ const Home = () => {
               <ScrollAnimation key={project.id} delay={index * 0.15} direction="up">
                 <Link to="/projects" className="group block">
                   <div className="relative overflow-hidden rounded-lg shadow-lg">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+                    <div className="relative">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className={`w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110 ${
+                          project.isBlurred ? "blur-sm brightness-75" : ""
+                        }`}
+                      />
+                      {project.isBlurred && (
+                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                          <span className="text-white text-lg font-display font-semibold bg-black/50 px-4 py-2 rounded-full">
+                            Coming Soon
+                          </span>
+                        </div>
+                      )}
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <span className="inline-block px-3 py-1 bg-gold text-xs font-semibold rounded-full mb-3">
+                      <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3 ${
+                        project.status === "Now Selling" ? "bg-gold" : "bg-muted-foreground"
+                      }`}>
                         {project.status}
                       </span>
                       <h3 className="text-2xl font-display font-bold mb-2">{project.title}</h3>
@@ -251,7 +295,7 @@ const Home = () => {
           <ScrollAnimation>
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">
-                Rycca = <span className="text-gold">Real Capital Creation</span>
+                Our <span className="text-gold">Philosophy</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
                 We believe in turning land into intelligent wealth through structured, research-driven development. 

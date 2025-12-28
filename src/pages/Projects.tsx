@@ -89,28 +89,36 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen overflow-x-hidden">
+      {/* Hero Section with Strong Image */}
+      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={project1}
+            alt="Rycca Silicon Fairworth"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
+            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6">
               Our <span className="text-gold">Projects</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Research-backed plotted developments with 100% legal compliance and transparent documentation
+            <p className="text-xl md:text-2xl text-white/90">
+              Research-backed plotted developments with 100% legal compliance
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Current Project - Silicon Fairworth */}
-      <section className="py-20">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center mb-12">
@@ -176,27 +184,6 @@ const Projects = () => {
                       {project.description}
                     </p>
 
-                    <div className="p-4 bg-secondary rounded-lg">
-                      <p className="font-display font-semibold text-gold mb-2">Investment Logic</p>
-                      <p className="text-muted-foreground">{project.investmentLogic}</p>
-                    </div>
-
-                    {/* Approvals */}
-                    <div>
-                      <h4 className="text-xl font-display font-semibold mb-3">Approvals & Legal Clarity</h4>
-                      <div className="grid grid-cols-2 gap-3 mb-3">
-                        {project.approvals.map((approval, idx) => (
-                          <div key={idx} className="flex items-center gap-2 p-3 bg-secondary rounded-lg border border-gold/20">
-                            <Shield className="w-5 h-5 text-gold flex-shrink-0" />
-                            <span className="font-semibold">{approval}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        RERA: {project.reraNumber}
-                      </p>
-                    </div>
-
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4 border-t border-border">
                       <Link to="/contact" className="w-full sm:w-auto">
                         <Button className="bg-gold hover:bg-gold-dark text-white group w-full sm:w-auto">
@@ -211,61 +198,155 @@ const Projects = () => {
                   </div>
                 </div>
               </ScrollAnimation>
-
-              {/* Location Advantages */}
-              <ScrollAnimation direction="up">
-                <div className="bg-secondary p-8 rounded-lg">
-                  <h4 className="text-2xl font-display font-bold mb-6 text-center">
-                    Why Invest in <span className="text-gold">This Location?</span>
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="p-4 bg-background rounded-lg">
-                      <Building2 className="w-10 h-10 text-gold mb-3" />
-                      <h5 className="font-display font-semibold mb-2">ITIR Industrial Hub</h5>
-                      <p className="text-sm text-muted-foreground">Foxconn (Semiconductors, EV, AI), Inox, and major MSMEs creating massive job demand</p>
-                    </div>
-                    <div className="p-4 bg-background rounded-lg">
-                      <TreePine className="w-10 h-10 text-gold mb-3" />
-                      <h5 className="font-display font-semibold mb-2">Premium Lifestyle</h5>
-                      <p className="text-sm text-muted-foreground">Harrow International, Canadian International, Vidyashilp Academy, resorts & sports villages nearby</p>
-                    </div>
-                    <div className="p-4 bg-background rounded-lg">
-                      <MapPin className="w-10 h-10 text-gold mb-3" />
-                      <h5 className="font-display font-semibold mb-2">Multi-Road Connectivity</h5>
-                      <p className="text-sm text-muted-foreground">Connected via NH207 and STRR with 4 more approach roads emerging</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollAnimation>
-
-              {/* Amenities */}
-              <ScrollAnimation direction="up">
-                <div>
-                  <h4 className="text-2xl font-display font-bold mb-6 text-center">
-                    World-Class <span className="text-gold">Amenities</span>
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {project.amenities.map((amenity, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-4 bg-secondary rounded-lg">
-                        <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">{amenity}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollAnimation>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Past Projects */}
+      {/* Investment Logic Section - Separate Scroll Section */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                Our <span className="text-gold">Track Record</span>
+                Investment <span className="text-gold">Logic</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Understanding the strategic value of this location
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="max-w-5xl mx-auto">
+            <ScrollAnimation direction="up">
+              <div className="bg-background p-8 md:p-12 rounded-xl shadow-lg mb-8">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-gold mb-4">
+                    Strategic proximity to ITIR region with high job demand and huge rental yield potential
+                  </h3>
+                  <p className="text-muted-foreground max-w-3xl mx-auto">
+                    The ITIR (Information Technology Investment Region) is poised to become Bangalore's next growth engine, 
+                    with Foxconn's semiconductor and EV manufacturing facility leading the industrial transformation.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="p-6 bg-secondary rounded-lg text-center">
+                    <Building2 className="w-12 h-12 text-gold mx-auto mb-4" />
+                    <h4 className="font-display font-bold mb-2">ITIR Industrial Hub</h4>
+                    <p className="text-sm text-muted-foreground">Foxconn, Inox, and major MSMEs creating massive job demand</p>
+                  </div>
+                  <div className="p-6 bg-secondary rounded-lg text-center">
+                    <TreePine className="w-12 h-12 text-gold mx-auto mb-4" />
+                    <h4 className="font-display font-bold mb-2">Premium Lifestyle</h4>
+                    <p className="text-sm text-muted-foreground">International schools, hospitals, resorts, and sports villages</p>
+                  </div>
+                  <div className="p-6 bg-secondary rounded-lg text-center">
+                    <MapPin className="w-12 h-12 text-gold mx-auto mb-4" />
+                    <h4 className="font-display font-bold mb-2">Multi-Road Connectivity</h4>
+                    <p className="text-sm text-muted-foreground">NH207, STRR, with 4 more approach roads emerging</p>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <Link to="/contact">
+                    <Button size="lg" className="bg-gold hover:bg-gold-dark text-white group">
+                      Know More
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </div>
+      </section>
+
+      {/* Approvals & Legal Clarity - Dedicated Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Approvals & <span className="text-gold">Legal Clarity</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Complete regulatory compliance for hassle-free ownership
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+              {["RERA Approved", "BMRDA Approved", "A-Khata", "STRR Approved"].map((approval, index) => (
+                <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                  <div className="bg-secondary p-6 rounded-xl text-center hover:shadow-lg transition-all duration-300 border-2 border-gold/20 hover:border-gold/50">
+                    <Shield className="w-10 h-10 text-gold mx-auto mb-4" />
+                    <h4 className="font-display font-bold text-foreground">{approval}</h4>
+                  </div>
+                </ScrollAnimation>
+              ))}
+            </div>
+
+            <ScrollAnimation>
+              <div className="bg-gradient-to-r from-gold/10 to-gold/5 p-8 rounded-xl">
+                <div className="text-center">
+                  <h4 className="text-xl font-display font-bold mb-4">RERA Registration Number</h4>
+                  <p className="text-lg text-muted-foreground font-mono bg-background inline-block px-6 py-3 rounded-lg">
+                    PRM/KA/RERA/1250/301/PR/130125/007381
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                  <div className="text-center">
+                    <FileCheck className="w-8 h-8 text-gold mx-auto mb-2" />
+                    <p className="text-sm text-muted-foreground">Complete Documentation</p>
+                  </div>
+                  <div className="text-center">
+                    <Landmark className="w-8 h-8 text-gold mx-auto mb-2" />
+                    <p className="text-sm text-muted-foreground">Clear Land Titles</p>
+                  </div>
+                  <div className="text-center">
+                    <CheckCircle className="w-8 h-8 text-gold mx-auto mb-2" />
+                    <p className="text-sm text-muted-foreground">Zero Legal Ambiguity</p>
+                  </div>
+                </div>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </div>
+      </section>
+
+      {/* Amenities */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                World-Class <span className="text-gold">Amenities</span>
+              </h2>
+            </div>
+          </ScrollAnimation>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+            {allProjects[0].amenities.map((amenity, idx) => (
+              <ScrollAnimation key={idx} delay={idx * 0.05} direction="up">
+                <div className="flex items-start gap-3 p-4 bg-background rounded-lg hover:shadow-md transition-all duration-300">
+                  <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">{amenity}</span>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Past Projects */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Past <span className="text-gold">Projects</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Successfully delivered projects with consistent ROI
@@ -276,7 +357,7 @@ const Projects = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {pastProjects.map((project, index) => (
               <ScrollAnimation key={project.id} delay={index * 0.1} direction="up">
-                <div className="bg-background rounded-lg overflow-hidden shadow-lg">
+                <div className="bg-secondary rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="relative">
                     <img
                       src={project.image}
@@ -319,41 +400,6 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Rycca Brand Positioning */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-                The <span className="text-gold">Rycca</span> Difference
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Every project undergoes rigorous research, legal verification, and location analysis. 
-                We don't just sell land—we create structured investment opportunities with transparent 
-                documentation, clear titles, and zero ambiguity.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-6 bg-secondary rounded-lg">
-                  <FileCheck className="w-12 h-12 text-gold mx-auto mb-4" />
-                  <h3 className="font-display font-bold mb-2">100% Compliance</h3>
-                  <p className="text-sm text-muted-foreground">All regulatory approvals in place</p>
-                </div>
-                <div className="p-6 bg-secondary rounded-lg">
-                  <Landmark className="w-12 h-12 text-gold mx-auto mb-4" />
-                  <h3 className="font-display font-bold mb-2">Clear Titles</h3>
-                  <p className="text-sm text-muted-foreground">Transparent legal documentation</p>
-                </div>
-                <div className="p-6 bg-secondary rounded-lg">
-                  <Shield className="w-12 h-12 text-gold mx-auto mb-4" />
-                  <h3 className="font-display font-bold mb-2">Zero Ambiguity</h3>
-                  <p className="text-sm text-muted-foreground">Research-backed land curation</p>
-                </div>
-              </div>
-            </div>
-          </ScrollAnimation>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-gold-dark via-gold to-gold-light">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -367,11 +413,11 @@ const Projects = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="w-full sm:w-auto">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gold w-full sm:w-auto">
+                  <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-gold w-full sm:w-auto">
                     Book Site Visit
                   </Button>
                 </Link>
-                <Button size="lg" className="bg-white text-gold hover:bg-white/90 w-full sm:w-auto">
+                <Button size="lg" className="bg-white text-gold hover:bg-white/90">
                   Download Brochure
                 </Button>
               </div>

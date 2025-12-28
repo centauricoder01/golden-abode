@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import heroImage from "@/assets/hero-property.jpg";
 
 const Contact = () => {
   const contactInfo = [
@@ -34,28 +35,36 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen overflow-x-hidden">
+      {/* Hero Section with Strong Visual */}
+      <section className="relative h-[50vh] min-h-[350px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt="Contact Rycca Ventures"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
+            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6">
               Get in <span className="text-gold">Touch</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Have questions? We'd love to hear from you. Reach out to us through any of the channels below.
+            <p className="text-xl md:text-2xl text-white/90">
+              Have questions? We'd love to hear from you.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-20">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center mb-12">
@@ -193,8 +202,8 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* FAQ or Additional Info Section */}
-      <section className="py-20 bg-secondary">
+      {/* Experience Center Section */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center max-w-3xl mx-auto">
