@@ -136,9 +136,6 @@ const About = () => {
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6">
               About <span className="text-gold">Rycca Ventures</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90">
-              For Investors
-            </p>
             <p className="text-2xl md:text-3xl font-display text-gold mt-4">
               Where clarity meets long-term capital growth.
             </p>
