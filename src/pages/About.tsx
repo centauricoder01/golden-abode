@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import { Target, Shield, TrendingUp, Users, Award, CheckCircle, Search, FileCheck, Building2, Home, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { Target, Shield, TrendingUp, Users, Award, CheckCircle, Search, FileCheck, Building2, ChevronLeft, ChevronRight, Lightbulb, Eye, Crosshair } from "lucide-react";
 import aboutTeam from "@/assets/about-team.jpg";
 import heroImage from "@/assets/hero-property.jpg";
 
@@ -18,7 +18,61 @@ const About = () => {
     }
   };
 
-  const brandPillars = [
+  // 1st Scroll - Our Vision
+  const vision = {
+    title: "Our Vision",
+    description: "To cater to 5,000 house owners over the next five to ten years and become a leader in delivering hassle-free, high-quality real estate developments.",
+    details: "Rycca Ventures is positioned as a forward-thinking real estate development firm, specializing in strategically located projects that offer maximum value to investors and end-users alike."
+  };
+
+  // 2nd Scroll - Our Mission
+  const mission = {
+    title: "Our Mission",
+    description: "To deliver top-class infrastructure, ensuring transparent, hassle-free ownership experiences, and creating developments that stand the test of time.",
+    points: [
+      "Quality-first development approach",
+      "Strategic location advantage",
+      "Strict compliance with government regulations",
+      "True value for money"
+    ]
+  };
+
+  // 3rd Scroll - Leadership
+  const leadership = [
+    {
+      name: "Leadership Team",
+      role: "Founders",
+      description: "Our leadership brings over three decades of real estate expertise, having started the journey in 1992 with properties in BTM Layout, Bangalore.",
+      image: aboutTeam,
+    }
+  ];
+
+  // 4th Scroll - Team & Experience
+  const milestones = [
+    {
+      year: "1992",
+      title: "Our Roots",
+      description: "The founder's journey in real estate began with properties in BTM Layout, Bangalore.",
+    },
+    {
+      year: "2013",
+      title: "First Developer Project",
+      description: "Launched our first project as a developer in Nelamangala through a joint venture. Today, 20+ happy families reside there with a steady ROI of 20.94%.",
+    },
+    {
+      year: "2020",
+      title: "Premium Layout",
+      description: "Developed a premium 1-acre residential layout featuring doubly reinforced concrete roads, delivering a strong ROI of 23.33%.",
+    },
+    {
+      year: "2025",
+      title: "Silicon Fairworth",
+      description: "Launched Rycca Silicon Fairworth with 45 plots registered since April 2025 and 30 more bookings in record time.",
+    },
+  ];
+
+  // 5th Scroll - Value Proposition for Investors
+  const investorValueProposition = [
     {
       icon: Target,
       title: "Strategic Location Value",
@@ -36,34 +90,8 @@ const About = () => {
     },
   ];
 
-  const investmentMethod = [
-    {
-      step: "Step 1",
-      title: "Clarity",
-      description: "Transparent approvals, simple workflows, and clear communication at every stage",
-    },
-    {
-      step: "Step 2",
-      title: "Credibility",
-      description: "Research-led, compliance-first development with 100% legal documentation",
-    },
-    {
-      step: "Step 3",
-      title: "Compounding",
-      description: "Projects designed for long-term wealth creation and generational value",
-    },
-  ];
-
-  const investorAdvantages = [
-    { icon: Search, text: "Research-led selection" },
-    { icon: Shield, text: "100% legal compliance" },
-    { icon: FileCheck, text: "Transparent paperwork" },
-    { icon: CheckCircle, text: "Predictable execution" },
-    { icon: TrendingUp, text: "Growth-driven planning" },
-    { icon: Award, text: "Long-term appreciation mindset" },
-  ];
-
-  const whatMakesUsDifferent = [
+  // 6th Scroll - What We Bring to the Table
+  const whatWeBring = [
     {
       title: "Research-first acquisition",
       description: "Every land parcel undergoes rigorous due diligence before acquisition, analyzing growth corridors, infrastructure development, and appreciation potential.",
@@ -88,29 +116,6 @@ const About = () => {
       title: "Slow, thoughtful rollout",
       description: "We prioritize quality over speed, ensuring every detail is perfected before project delivery for maximum value realization.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
-    },
-  ];
-
-  const milestones = [
-    {
-      year: "1992",
-      title: "Our Roots",
-      description: "The founder's journey in real estate began with properties in BTM Layout, Bangalore.",
-    },
-    {
-      year: "2013",
-      title: "First Developer Project",
-      description: "Launched our first project as a developer in Nelamangala through a joint venture. Today, 20+ happy families reside there with a steady ROI of 20.94%.",
-    },
-    {
-      year: "2020",
-      title: "Premium Layout",
-      description: "Developed a premium 1-acre residential layout featuring doubly reinforced concrete roads, delivering a strong ROI of 23.33%.",
-    },
-    {
-      year: "2025",
-      title: "Silicon Fairworth",
-      description: "Launched Rycca Silicon Fairworth with 45 plots registered since April 2025 and 30 more bookings in record time.",
     },
   ];
 
@@ -143,26 +148,26 @@ const About = () => {
         </div>
       </section>
 
-      {/* Brand Value Section */}
+      {/* 1st Scroll - Our Vision */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollAnimation direction="left">
               <div>
-                <h2 className="text-4xl font-display font-bold mb-6">
-                  Our <span className="text-gold">Vision</span>
-                </h2>
-                <p className="text-xl font-display text-foreground mb-6">
-                  To cater to 5,000 house owners over the next five to ten years and become a leader in delivering hassle-free, high-quality real estate developments.
-                </p>
-                <div className="space-y-4 text-muted-foreground">
-                  <p>
-                    <span className="font-semibold text-gold">Rycca Ventures</span> is positioned as a forward-thinking real estate development firm, specializing in strategically located projects that offer maximum value to investors and end-users alike.
-                  </p>
-                  <p>
-                    Our focus is on delivering top-class infrastructure, ensuring transparent, hassle-free ownership experiences, and creating developments that stand the test of time. We are a modern, premium, and trustworthy brand in the North Bangalore real estate market.
-                  </p>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+                    <Eye className="w-7 h-7 text-gold" />
+                  </div>
+                  <h2 className="text-4xl font-display font-bold">
+                    Our <span className="text-gold">Vision</span>
+                  </h2>
                 </div>
+                <p className="text-xl font-display text-foreground mb-6">
+                  {vision.description}
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  {vision.details}
+                </p>
               </div>
             </ScrollAnimation>
 
@@ -180,13 +185,85 @@ const About = () => {
         </div>
       </section>
 
-      {/* Company History/Milestones */}
+      {/* 2nd Scroll - Our Mission */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center justify-center gap-4 mb-8">
+                <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center">
+                  <Crosshair className="w-7 h-7 text-gold" />
+                </div>
+                <h2 className="text-4xl md:text-5xl font-display font-bold">
+                  Our <span className="text-gold">Mission</span>
+                </h2>
+              </div>
+              <p className="text-xl text-center text-foreground mb-12">
+                {mission.description}
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {mission.points.map((point, index) => (
+                  <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                    <div className="flex items-center gap-4 p-6 bg-background rounded-lg hover:shadow-lg transition-all duration-300">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
+                        <CheckCircle className="w-5 h-5 text-gold" />
+                      </div>
+                      <p className="font-medium text-lg">{point}</p>
+                    </div>
+                  </ScrollAnimation>
+                ))}
+              </div>
+            </div>
+          </ScrollAnimation>
+        </div>
+      </section>
+
+      {/* 3rd Scroll - Leadership */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                <span className="text-gold">Leadership</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Guided by experience, driven by vision
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="max-w-4xl mx-auto">
+            {leadership.map((leader, index) => (
+              <ScrollAnimation key={index} direction="up">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div className="relative">
+                    <img
+                      src={leader.image}
+                      alt={leader.name}
+                      className="rounded-lg shadow-2xl w-full"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-display font-bold mb-2">{leader.name}</h3>
+                    <p className="text-gold text-lg mb-6">{leader.role}</p>
+                    <p className="text-muted-foreground leading-relaxed text-lg">
+                      {leader.description}
+                    </p>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4th Scroll - Team & Experience */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                Our <span className="text-gold">Journey</span>
+                Team & <span className="text-gold">Experience</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Over three decades of building trust and creating value
@@ -216,107 +293,44 @@ const About = () => {
         </div>
       </section>
 
-      {/* Track Record Stats - Moved before Clients */}
+      {/* 5th Scroll - Value Proposition for Investors */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                Our <span className="text-gold">Track Record</span>
+                Value Proposition for <span className="text-gold">Investors</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Clean, minimal, and credibility-focused numbers that speak for themselves
+                The three foundations of every Rycca project
               </p>
             </div>
           </ScrollAnimation>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <ScrollAnimation delay={0.1} direction="up">
-              <div className="text-center p-6 bg-secondary rounded-lg hover:shadow-xl transition-all duration-300">
-                <div className="text-4xl md:text-5xl font-display font-bold text-gold mb-2">400+</div>
-                <p className="text-muted-foreground">Happy Families</p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={0.2} direction="up">
-              <div className="text-center p-6 bg-secondary rounded-lg hover:shadow-xl transition-all duration-300">
-                <div className="text-4xl md:text-5xl font-display font-bold text-gold mb-2">30+</div>
-                <p className="text-muted-foreground">Years Experience</p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={0.3} direction="up">
-              <div className="text-center p-6 bg-secondary rounded-lg hover:shadow-xl transition-all duration-300">
-                <div className="text-4xl md:text-5xl font-display font-bold text-gold mb-2">24%+</div>
-                <p className="text-muted-foreground">Avg. ROI Delivered</p>
-              </div>
-            </ScrollAnimation>
-            <ScrollAnimation delay={0.4} direction="up">
-              <div className="text-center p-6 bg-secondary rounded-lg hover:shadow-xl transition-all duration-300">
-                <div className="text-4xl md:text-5xl font-display font-bold text-gold mb-2">100%</div>
-                <p className="text-muted-foreground">A-Khata Projects</p>
-              </div>
-            </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {investorValueProposition.map((pillar, index) => (
+              <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                <div className="bg-secondary p-8 rounded-lg hover:shadow-xl transition-all duration-300 h-full">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 text-gold mb-6">
+                    <pillar.icon size={32} />
+                  </div>
+                  <h3 className="text-2xl font-display font-bold mb-4">{pillar.title}</h3>
+                  <p className="text-muted-foreground">{pillar.description}</p>
+                </div>
+              </ScrollAnimation>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Our Clients - Hero Style Section */}
-      <section className="relative py-24 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80)`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/80 to-black/70" />
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 text-white">
-                  Our <span className="text-gold">Clients</span>
-                </h2>
-                <p className="text-xl text-white/90 mb-6">
-                  We have proudly sold plots to more than 400 happy families, including doctors, businessmen, and NRIs — many of whom are repeat customers purchasing at least one plot in every project we develop.
-                </p>
-                <p className="text-lg text-gold font-display italic">
-                  "Our focus remains on quality, strategic location advantage, strict compliance with government regulations, and delivering true value for money."
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
-                  <Users className="w-12 h-12 text-gold mx-auto mb-4" />
-                  <h3 className="text-3xl font-display font-bold text-white mb-2">400+</h3>
-                  <p className="text-white/80">Happy Families</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
-                  <Award className="w-12 h-12 text-gold mx-auto mb-4" />
-                  <h3 className="text-3xl font-display font-bold text-white mb-2">50%+</h3>
-                  <p className="text-white/80">Repeat Customers</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
-                  <Building2 className="w-12 h-12 text-gold mx-auto mb-4" />
-                  <h3 className="text-3xl font-display font-bold text-white mb-2">NRIs</h3>
-                  <p className="text-white/80">Global Investors</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
-                  <Target className="w-12 h-12 text-gold mx-auto mb-4" />
-                  <h3 className="text-3xl font-display font-bold text-white mb-2">100%</h3>
-                  <p className="text-white/80">Satisfaction</p>
-                </div>
-              </div>
-            </div>
-          </ScrollAnimation>
-        </div>
-      </section>
-
-      {/* What Makes Us Different - Horizontal Card Scroller */}
+      {/* 6th Scroll - What We Bring to the Table */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="flex items-center justify-between mb-12">
               <div>
                 <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                  What Makes Us <span className="text-gold">Different</span>
+                  What We Bring to the <span className="text-gold">Table</span>
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl">
                   Five principles that define the Rycca approach
@@ -346,7 +360,7 @@ const About = () => {
             className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {whatMakesUsDifferent.map((item, index) => (
+            {whatWeBring.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: 50 }}
@@ -382,92 +396,6 @@ const About = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Brand Pillars */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                Brand <span className="text-gold">Pillars</span>
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                The three foundations of every Rycca project
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {brandPillars.map((pillar, index) => (
-              <ScrollAnimation key={index} delay={index * 0.1} direction="up">
-                <div className="bg-secondary p-8 rounded-lg hover:shadow-xl transition-all duration-300 h-full">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 text-gold mb-6">
-                    <pillar.icon size={32} />
-                  </div>
-                  <h3 className="text-2xl font-display font-bold mb-4">{pillar.title}</h3>
-                  <p className="text-muted-foreground">{pillar.description}</p>
-                </div>
-              </ScrollAnimation>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* The Rycca Investment Method */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                The Rycca Investment <span className="text-gold">Method™</span>
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Why Investors Choose Rycca
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              {investmentMethod.map((method, index) => (
-                <ScrollAnimation key={index} delay={index * 0.1} direction="up">
-                  <div className="relative bg-background p-8 rounded-lg hover:shadow-xl transition-all duration-300">
-                    <div className="absolute -top-4 left-8">
-                      <span className="inline-block px-4 py-2 bg-gold text-white font-display font-bold rounded-full">
-                        {method.step}
-                      </span>
-                    </div>
-                    <h3 className="text-2xl font-display font-bold mb-4 mt-4">{method.title}</h3>
-                    <p className="text-muted-foreground">{method.description}</p>
-                  </div>
-                </ScrollAnimation>
-              ))}
-            </div>
-
-            {/* Investor Advantages Grid */}
-            <ScrollAnimation>
-              <div className="bg-background p-8 rounded-lg">
-                <h3 className="text-3xl font-display font-bold mb-8 text-center">
-                  Your Investment, <span className="text-gold">Upgraded</span>
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {investorAdvantages.map((advantage, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-4 p-4 bg-secondary rounded-lg hover:bg-gold/5 transition-all duration-300"
-                    >
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
-                        <advantage.icon className="w-5 h-5 text-gold" />
-                      </div>
-                      <p className="font-medium">{advantage.text}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollAnimation>
           </div>
         </div>
       </section>
