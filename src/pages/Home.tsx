@@ -13,7 +13,8 @@ const Home = () => {
   const whoWeAre = {
     title: "Who We Are",
     subtitle: "Rycca Ventures",
-    description: "A forward-thinking real estate development firm specializing in strategically located projects that offer maximum value to investors and end-users alike. We focus on delivering top-class infrastructure, transparent ownership experiences, and developments that stand the test of time.",
+    description:
+      "A forward-thinking real estate development firm specializing in strategically located projects that offer maximum value to investors and end-users alike. We focus on delivering top-class infrastructure, transparent ownership experiences, and developments that stand the test of time.",
   };
 
   // 2nd Scroll - Our Value Proposition (A framework that drives every decision)
@@ -21,17 +22,20 @@ const Home = () => {
     {
       icon: Target,
       title: "Strategic Location Value",
-      description: "Carefully selected locations with infrastructure pipeline and growth indicators",
+      description:
+        "Carefully selected locations with infrastructure pipeline and growth indicators",
     },
     {
       icon: Lightbulb,
       title: "Intelligent Planning",
-      description: "Research-first acquisition with value-focused planning and zoning optimization",
+      description:
+        "Research-first acquisition with value-focused planning and zoning optimization",
     },
     {
       icon: TrendingUp,
       title: "Value-Per-Risk Ratio",
-      description: "Projects planned for long-term wealth creation and predictable execution",
+      description:
+        "Projects planned for long-term wealth creation and predictable execution",
     },
   ];
 
@@ -54,31 +58,32 @@ const Home = () => {
       isBlurred: false,
       hasVideo: true,
     },
-    {
-      id: 2,
-      title: "Silicon Fairworth – Phase 2",
-      location: "Doddaballapura, Bangalore",
-      image: project2,
-      status: "Coming Soon",
-      isBlurred: true,
-      hasVideo: false,
-    },
-    {
-      id: 3,
-      title: "Upcoming Project",
-      location: "North Bangalore",
-      image: project3,
-      status: "Coming Soon",
-      isBlurred: true,
-      hasVideo: false,
-    },
+    // {
+    //   id: 2,
+    //   title: "Silicon Fairworth – Phase 2",
+    //   location: "Doddaballapura, Bangalore",
+    //   image: project2,
+    //   status: "Coming Soon",
+    //   isBlurred: true,
+    //   hasVideo: false,
+    // },
+    // {
+    //   id: 3,
+    //   title: "Upcoming Project",
+    //   location: "North Bangalore",
+    //   image: project3,
+    //   status: "Coming Soon",
+    //   isBlurred: true,
+    //   hasVideo: false,
+    // },
   ];
 
   // 5th Scroll - Our Approach (Timeline)
   const ourApproach = [
     {
       title: "Market Scanning & Data Analysis",
-      description: "Find under-valued micro-markets with infrastructure growth potential.",
+      description:
+        "Find under-valued micro-markets with infrastructure growth potential.",
       color: "bg-blue-600",
     },
     {
@@ -88,22 +93,26 @@ const Home = () => {
     },
     {
       title: "Master-Planning & Layout Design",
-      description: "Optimized plot layouts with focus on livability and future demand.",
+      description:
+        "Optimized plot layouts with focus on livability and future demand.",
       color: "bg-amber-400",
     },
     {
       title: "Regulatory Approvals & Compliance",
-      description: "Ensure all documentation (approval, khata, registration-ready) is in place.",
+      description:
+        "Ensure all documentation (approval, khata, registration-ready) is in place.",
       color: "bg-orange-500",
     },
     {
       title: "Investor-Ready Product Delivery",
-      description: "Transparent pricing, clear documentation, open communication.",
+      description:
+        "Transparent pricing, clear documentation, open communication.",
       color: "bg-green-500",
     },
     {
       title: "Long-Term Value Support",
-      description: "Advisory on resale potential, investment horizon, and legal/transfer assistance.",
+      description:
+        "Advisory on resale potential, investment horizon, and legal/transfer assistance.",
       color: "bg-pink-600",
     },
   ];
@@ -120,7 +129,10 @@ const Home = () => {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+            <source
+              src="https://santhusta.in/media/images/banner/banner-video2.mp4"
+              type="video/mp4"
+            />
             <img
               src={heroImage}
               alt="Luxury Property"
@@ -169,13 +181,20 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link to="/projects">
-                <Button size="lg" className="bg-gold hover:bg-gold-dark text-white group">
+                <Button
+                  size="lg"
+                  className="bg-gold hover:bg-gold-dark text-white group"
+                >
                   Explore Projects
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-foreground">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent border-white text-white hover:bg-white hover:text-foreground"
+                >
                   Contact Us
                 </Button>
               </Link>
@@ -198,7 +217,9 @@ const Home = () => {
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
                 {whoWeAre.title}
               </h2>
-              <p className="text-2xl text-gold font-display mb-8">{whoWeAre.subtitle}</p>
+              <p className="text-2xl text-gold font-display mb-8">
+                {whoWeAre.subtitle}
+              </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 {whoWeAre.description}
               </p>
@@ -228,7 +249,9 @@ const Home = () => {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 text-gold mb-6">
                     <item.icon size={32} />
                   </div>
-                  <h3 className="text-xl font-display font-semibold mb-3">{item.title}</h3>
+                  <h3 className="text-xl font-display font-semibold mb-3">
+                    {item.title}
+                  </h3>
                   <p className="text-muted-foreground">{item.description}</p>
                 </div>
               </ScrollAnimation>
@@ -238,18 +261,21 @@ const Home = () => {
       </section>
 
       {/* 3rd Scroll - RYCCA = Real Capital Creation + Our Track Record */}
-      <section className="py-16 bg-gradient-to-r from-gold-dark via-gold to-gold-light">
+      <section className="py-16 bg-[#B6772F]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center text-white mb-12">
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
                 className="text-4xl md:text-6xl font-display font-bold"
               >
-                RYCCA = <span className="underline decoration-4 underline-offset-8">Real Capital Creation</span>
+                RYCCA ={" "}
+                <span className="underline decoration-4 underline-offset-8">
+                  Real Capital Creation
+                </span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -258,7 +284,8 @@ const Home = () => {
                 viewport={{ once: true }}
                 className="mt-6 text-xl opacity-90 max-w-2xl mx-auto"
               >
-                Turning land into structured, research-backed wealth for generations.
+                Turning land into structured, research-backed wealth for
+                generations.
               </motion.p>
             </div>
           </ScrollAnimation>
@@ -268,7 +295,9 @@ const Home = () => {
             {trackRecord.map((stat, index) => (
               <ScrollAnimation key={index} delay={index * 0.1} direction="up">
                 <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-lg">
-                  <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2">{stat.value}</div>
+                  <div className="text-4xl md:text-5xl font-display font-bold text-white mb-2">
+                    {stat.value}
+                  </div>
                   <p className="text-white/80">{stat.label}</p>
                 </div>
               </ScrollAnimation>
@@ -291,44 +320,87 @@ const Home = () => {
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="space-y-8 max-w-full mx-auto">
             {projects.map((project, index) => (
-              <ScrollAnimation key={project.id} delay={index * 0.15} direction="up">
-                <Link to="/projects" className="group block">
-                  <div className="relative overflow-hidden rounded-lg shadow-lg">
-                    <div className="relative">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className={`w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110 ${
-                          project.isBlurred ? "blur-sm brightness-75" : ""
-                        }`}
-                      />
-                      {project.isBlurred && (
-                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                          <span className="text-white text-lg font-display font-semibold bg-black/50 px-4 py-2 rounded-full">
-                            Coming Soon
+              <ScrollAnimation
+                key={project.id}
+                delay={index * 0.15}
+                direction="up"
+              >
+                <Link to={`/projects`} className="group block">
+                  <div className="relative overflow-hidden rounded-2xl lg:rounded-3xl shadow-2xl h-[500px] sm:h-[600px] lg:h-[700px]">
+                    {/* Background Image */}
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${
+                        project.isBlurred ? "blur-sm brightness-75" : ""
+                      }`}
+                    />
+
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
+
+                    {/* Coming Soon Overlay */}
+                    {project.isBlurred && (
+                      <div className="absolute inset-0 flex items-center justify-center z-20">
+                        <span className="text-white text-xl sm:text-2xl lg:text-3xl font-display font-bold bg-black/60 backdrop-blur-sm px-6 py-3 sm:px-8 sm:py-4 rounded-full border-2 border-white/30">
+                          Coming Soon
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Content Overlay */}
+                    <div className="absolute inset-0 p-6 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-between">
+                      {/* Top Section - Title & Location */}
+                      <div>
+                        <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-white mb-3 sm:mb-4 leading-tight">
+                          {project.title}
+                        </h3>
+                        <div className="flex items-center gap-2 text-white/90 text-base sm:text-lg lg:text-xl">
+                          <span>📍</span>
+                          <span>{project.location}</span>
+                        </div>
+
+                        {/* Walkthrough Badge */}
+                        {project.hasVideo && !project.isBlurred && (
+                          <div className="mt-4 inline-block">
+                            <span className="bg-gold/90 backdrop-blur-sm text-white text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full flex items-center gap-2 w-fit">
+                              <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                              Walkthrough Available
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Bottom Section - Status & CTA */}
+                      <div className="space-y-3 sm:space-y-4">
+                        {/* Status Badge */}
+                        <div>
+                          <span
+                            className={`inline-block px-4 py-1.5 sm:px-6 sm:py-2 text-sm sm:text-base font-bold rounded-full ${
+                              project.status === "Now Selling"
+                                ? "bg-gold text-white"
+                                : "bg-white/20 backdrop-blur-sm text-white border border-white/30"
+                            }`}
+                          >
+                            {project.status}
                           </span>
                         </div>
-                      )}
-                      {project.hasVideo && !project.isBlurred && (
-                        <div className="absolute top-4 right-4">
-                          <span className="bg-gold text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1">
-                            <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                            Walkthrough Available
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3 ${
-                        project.status === "Now Selling" ? "bg-gold" : "bg-muted-foreground"
-                      }`}>
-                        {project.status}
-                      </span>
-                      <h3 className="text-2xl font-display font-bold mb-2">{project.title}</h3>
-                      <p className="text-white/90">{project.location}</p>
+
+                        {/* Visit Button */}
+                        {!project.isBlurred && (
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                            <Button
+                              className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-foreground group-hover:border-white transition-all duration-300 w-full sm:w-auto"
+                              size="lg"
+                            >
+                              View Details
+                              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
+                            </Button>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -337,11 +409,14 @@ const Home = () => {
           </div>
 
           <ScrollAnimation delay={0.5}>
-            <div className="text-center mt-12">
+            <div className="text-center mt-12 sm:mt-16">
               <Link to="/projects">
-                <Button size="lg" className="bg-gold hover:bg-gold-dark text-white group">
+                <Button
+                  size="lg"
+                  className="bg-gold hover:bg-gold-dark text-white group px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg w-full sm:w-auto"
+                >
                   View All Projects
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
             </div>
@@ -380,7 +455,9 @@ const Home = () => {
                   <h3 className="text-lg font-display font-bold text-gold mb-2">
                     {index + 1}. {step.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {step.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -417,7 +494,9 @@ const Home = () => {
                   <h3 className="text-lg font-display font-bold text-gold mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {step.description}
+                  </p>
                 </motion.div>
               ))}
               <div className="col-span-1" /> {/* Offset for alignment */}
@@ -435,7 +514,9 @@ const Home = () => {
                   className="flex gap-4"
                 >
                   <div className="flex flex-col items-center">
-                    <div className={`w-4 h-4 rounded-full ${step.color} flex-shrink-0`} />
+                    <div
+                      className={`w-4 h-4 rounded-full ${step.color} flex-shrink-0`}
+                    />
                     {index < ourApproach.length - 1 && (
                       <div className="w-0.5 h-full bg-muted-foreground/30 mt-2" />
                     )}
@@ -444,7 +525,9 @@ const Home = () => {
                     <h3 className="text-lg font-display font-bold text-gold mb-1">
                       {index + 1}. {step.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {step.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -462,16 +545,24 @@ const Home = () => {
                 Start Your Wealth Journey Today
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Book a consultation to explore intelligent investment opportunities
+                Book a consultation to explore intelligent investment
+                opportunities
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-gold">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-transparent border-white text-white hover:bg-white hover:text-gold"
+                  >
                     Book a Consultation
                   </Button>
                 </Link>
                 <Link to="/projects">
-                  <Button size="lg" className="bg-white text-gold hover:bg-white/90">
+                  <Button
+                    size="lg"
+                    className="bg-white text-gold hover:bg-white/90"
+                  >
                     Download Brochure
                   </Button>
                 </Link>
