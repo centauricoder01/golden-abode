@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Award, Building2, TrendingUp, Target, Shield, Users, Lightbulb, CheckCircle } from "lucide-react";
+import { ArrowRight, Target, TrendingUp, Lightbulb } from "lucide-react";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-property.jpg";
@@ -74,22 +74,37 @@ const Home = () => {
     },
   ];
 
-  // 5th Scroll - Our Approach
+  // 5th Scroll - Our Approach (Timeline)
   const ourApproach = [
     {
-      icon: Shield,
-      title: "100% Compliance",
-      description: "STRRPA / BMRDA / RERA / E-Khata",
+      title: "Market Scanning & Data Analysis",
+      description: "Find under-valued micro-markets with infrastructure growth potential.",
+      color: "bg-blue-600",
     },
     {
-      icon: Award,
-      title: "Research-Backed Land Curation",
-      description: "Every project undergoes rigorous research and due diligence",
+      title: "Land Acquisition after Due-Diligence",
+      description: "Title checks, compliance, regulatory audit.",
+      color: "bg-red-500",
     },
     {
-      icon: CheckCircle,
-      title: "Transparent Documentation",
-      description: "Clear titles with zero ambiguity in legal processes",
+      title: "Master-Planning & Layout Design",
+      description: "Optimized plot layouts with focus on livability and future demand.",
+      color: "bg-amber-400",
+    },
+    {
+      title: "Regulatory Approvals & Compliance",
+      description: "Ensure all documentation (approval, khata, registration-ready) is in place.",
+      color: "bg-orange-500",
+    },
+    {
+      title: "Investor-Ready Product Delivery",
+      description: "Transparent pricing, clear documentation, open communication.",
+      color: "bg-green-500",
+    },
+    {
+      title: "Long-Term Value Support",
+      description: "Advisory on resale potential, investment horizon, and legal/transfer assistance.",
+      color: "bg-pink-600",
     },
   ];
 
@@ -335,31 +350,105 @@ const Home = () => {
       </section>
 
       {/* 5th Scroll - Our Approach */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-secondary overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                Our <span className="text-gold">Approach</span>
+            <div className="text-center mb-4">
+              <h2 className="text-4xl md:text-5xl font-display font-bold italic">
+                OUR <span className="text-foreground">APPROACH</span>
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                The pillars that define how we build and deliver
+              <div className="w-16 h-1 bg-gold mx-auto mt-4 mb-6" />
+              <p className="text-xl text-muted-foreground">
+                How we operate Step by Step
               </p>
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {ourApproach.map((item, index) => (
-              <ScrollAnimation key={index} delay={index * 0.1} direction="up">
-                <div className="h-full p-8 rounded-lg bg-background border-2 border-gold/20 hover:border-gold/40 transition-all duration-300">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gold/10 text-gold mb-6">
-                    <item.icon size={28} />
+          {/* Timeline Container */}
+          <div className="relative mt-16">
+            {/* Steps above the line (1, 2, 3) */}
+            <div className="hidden md:grid grid-cols-6 gap-4 mb-8">
+              {ourApproach.slice(0, 3).map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: -30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  viewport={{ once: true }}
+                  className="col-span-2"
+                >
+                  <h3 className="text-lg font-display font-bold text-gold mb-2">
+                    {index + 1}. {step.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Timeline Line with Dots */}
+            <div className="relative hidden md:block">
+              <div className="absolute left-0 right-0 h-0.5 bg-muted-foreground/30 top-1/2 transform -translate-y-1/2" />
+              <div className="flex justify-between items-center relative">
+                {ourApproach.map((step, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    className={`w-4 h-4 rounded-full ${step.color} z-10`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Steps below the line (4, 5, 6) */}
+            <div className="hidden md:grid grid-cols-6 gap-4 mt-8">
+              <div className="col-span-1" /> {/* Offset for alignment */}
+              {ourApproach.slice(3, 6).map((step, index) => (
+                <motion.div
+                  key={index + 3}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.15 }}
+                  viewport={{ once: true }}
+                  className="col-span-2"
+                >
+                  <h3 className="text-lg font-display font-bold text-gold mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                </motion.div>
+              ))}
+              <div className="col-span-1" /> {/* Offset for alignment */}
+            </div>
+
+            {/* Mobile: Vertical Timeline */}
+            <div className="md:hidden space-y-6">
+              {ourApproach.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex gap-4"
+                >
+                  <div className="flex flex-col items-center">
+                    <div className={`w-4 h-4 rounded-full ${step.color} flex-shrink-0`} />
+                    {index < ourApproach.length - 1 && (
+                      <div className="w-0.5 h-full bg-muted-foreground/30 mt-2" />
+                    )}
                   </div>
-                  <h3 className="text-xl font-display font-semibold mb-3 text-gold">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </div>
-              </ScrollAnimation>
-            ))}
+                  <div className="pb-6">
+                    <h3 className="text-lg font-display font-bold text-gold mb-1">
+                      {index + 1}. {step.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

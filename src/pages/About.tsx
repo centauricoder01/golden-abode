@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import { Target, Shield, TrendingUp, Users, Award, CheckCircle, Search, FileCheck, Building2, ChevronLeft, ChevronRight, Lightbulb, Eye, Crosshair } from "lucide-react";
+import { Target, TrendingUp, Award, CheckCircle, ChevronLeft, ChevronRight, Eye, Crosshair } from "lucide-react";
 import aboutTeam from "@/assets/about-team.jpg";
 import heroImage from "@/assets/hero-property.jpg";
 
@@ -38,13 +38,37 @@ const About = () => {
   };
 
   // 3rd Scroll - Leadership
+  const leadershipScrollRef = useRef<HTMLDivElement>(null);
+  
+  const scrollLeadership = (direction: "left" | "right") => {
+    if (leadershipScrollRef.current) {
+      const scrollAmount = 320;
+      leadershipScrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const leadership = [
     {
-      name: "Leadership Team",
-      role: "Founders",
-      description: "Our leadership brings over three decades of real estate expertise, having started the journey in 1992 with properties in BTM Layout, Bangalore.",
+      name: "Mr. John Joe",
+      role: "Managing Director",
       image: aboutTeam,
-    }
+      bgColor: "bg-blue-200",
+    },
+    {
+      name: "Mr. John Joe",
+      role: "Managing Director",
+      image: aboutTeam,
+      bgColor: "bg-amber-200",
+    },
+    {
+      name: "Mr. John Joe",
+      role: "Managing Director",
+      image: aboutTeam,
+      bgColor: "bg-pink-200",
+    },
   ];
 
   // 4th Scroll - Team & Experience
@@ -93,29 +117,29 @@ const About = () => {
   // 6th Scroll - What We Bring to the Table
   const whatWeBring = [
     {
-      title: "Research-first acquisition",
-      description: "Every land parcel undergoes rigorous due diligence before acquisition, analyzing growth corridors, infrastructure development, and appreciation potential.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
+      title: "Deep Land-Market Research",
+      description: "We evaluate micro-markets using economic, infrastructure and growth data before every acquisition.",
+      position: "top-left",
     },
     {
-      title: "Compliance-led development",
-      description: "We prioritize 100% regulatory compliance including RERA, BMRDA, A-Khata approvals ensuring hassle-free ownership experience.",
-      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80",
+      title: "Rigorous Due-Diligence & Legal Compliance",
+      description: "Every parcel is verified: titles, approvals, zoning, compliance with local planning authorities.",
+      position: "top-right",
     },
     {
-      title: "Investor-education-led sales",
-      description: "We don't just sell plots—we educate investors about location logic, growth indicators, and long-term value creation strategies.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+      title: "Holistic Master-Planning & Value Engineering",
+      description: "Plots are planned considering long-term resale value, infrastructure readiness, and livability.",
+      position: "bottom-left",
     },
     {
-      title: "Generational-value projects",
-      description: "Projects designed not just for immediate returns but for creating lasting wealth that can be passed down through generations.",
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",
+      title: "Transparent Investor Communication",
+      description: "From approvals to payment schedules, everything is clear and documented — no hidden costs.",
+      position: "bottom-right",
     },
     {
-      title: "Slow, thoughtful rollout",
-      description: "We prioritize quality over speed, ensuring every detail is perfected before project delivery for maximum value realization.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+      title: "Investor-Ready Product Delivery",
+      description: "Plots are planned considering long-term resale value, infrastructure readiness, and livability.",
+      position: "bottom-center",
     },
   ];
 
@@ -219,41 +243,83 @@ const About = () => {
       </section>
 
       {/* 3rd Scroll - Leadership */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                <span className="text-gold">Leadership</span>
+            <div className="text-center mb-6">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 italic">
+                OUR <span className="text-foreground">LEADERSHIP</span>
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Guided by experience, driven by vision
-              </p>
             </div>
+            <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-4">
+              A team driven by clarity, integrity, and economically logical decision-making.
+            </p>
+            <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
+              Rycca's leaders bring deep experience across land acquisition, compliance, planning, and investor advisory.
+            </p>
           </ScrollAnimation>
 
-          <div className="max-w-4xl mx-auto">
-            {leadership.map((leader, index) => (
-              <ScrollAnimation key={index} direction="up">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                  <div className="relative">
-                    <img
-                      src={leader.image}
-                      alt={leader.name}
-                      className="rounded-lg shadow-2xl w-full"
-                    />
+          {/* Desktop: Grid, Mobile: Horizontal Scroll */}
+          <div className="relative">
+            {/* Scroll buttons for mobile */}
+            <div className="flex md:hidden justify-center gap-4 mb-6">
+              <button
+                onClick={() => scrollLeadership("left")}
+                className="p-2 rounded-full bg-secondary border border-gold/20 hover:border-gold/60 transition-colors"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-5 h-5 text-gold" />
+              </button>
+              <button
+                onClick={() => scrollLeadership("right")}
+                className="p-2 rounded-full bg-secondary border border-gold/20 hover:border-gold/60 transition-colors"
+                aria-label="Scroll right"
+              >
+                <ChevronRight className="w-5 h-5 text-gold" />
+              </button>
+            </div>
+
+            <div 
+              ref={leadershipScrollRef}
+              className="flex md:grid md:grid-cols-3 gap-8 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scrollbar-hide max-w-5xl mx-auto"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {leadership.map((leader, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  viewport={{ once: true }}
+                  className="flex-shrink-0 w-[280px] md:w-auto snap-center"
+                >
+                  <div className="flex flex-col items-center">
+                    {/* Image with colored background */}
+                    <div className="relative mb-6">
+                      <div className={`absolute inset-0 ${leader.bgColor} rounded-lg transform translate-x-2 translate-y-2`} 
+                           style={{ width: '85%', height: '90%', top: '5%', left: '7.5%' }} />
+                      <motion.img
+                        src={leader.image}
+                        alt={leader.name}
+                        className="relative z-10 w-64 h-80 object-cover object-top"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </div>
+                    {/* Name and Role */}
+                    <h3 className="text-xl font-display font-bold text-foreground">{leader.name}</h3>
+                    <p className="text-muted-foreground">{leader.role}</p>
                   </div>
-                  <div>
-                    <h3 className="text-3xl font-display font-bold mb-2">{leader.name}</h3>
-                    <p className="text-gold text-lg mb-6">{leader.role}</p>
-                    <p className="text-muted-foreground leading-relaxed text-lg">
-                      {leader.description}
-                    </p>
-                  </div>
-                </div>
-              </ScrollAnimation>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
+
+          <ScrollAnimation delay={0.3}>
+            <p className="text-center text-muted-foreground max-w-3xl mx-auto mt-12 italic">
+              Their vision is simple — build developments that outlast cycles and create intelligent wealth for every investor.
+            </p>
+          </ScrollAnimation>
         </div>
       </section>
 
@@ -324,78 +390,171 @@ const About = () => {
       </section>
 
       {/* 6th Scroll - What We Bring to the Table */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-secondary overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
-            <div className="flex items-center justify-between mb-12">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                  What We Bring to the <span className="text-gold">Table</span>
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl">
-                  Five principles that define the Rycca approach
-                </p>
-              </div>
-              <div className="hidden md:flex gap-2">
-                <button
-                  onClick={() => scroll("left")}
-                  className="p-3 rounded-full bg-background border border-gold/20 hover:border-gold/60 transition-colors"
-                  aria-label="Scroll left"
-                >
-                  <ChevronLeft className="w-6 h-6 text-gold" />
-                </button>
-                <button
-                  onClick={() => scroll("right")}
-                  className="p-3 rounded-full bg-background border border-gold/20 hover:border-gold/60 transition-colors"
-                  aria-label="Scroll right"
-                >
-                  <ChevronRight className="w-6 h-6 text-gold" />
-                </button>
-              </div>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-center mb-16 italic">
+              WHAT WE BRING ON THE <span className="text-foreground">TABLE</span>
+            </h2>
           </ScrollAnimation>
 
-          <div 
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {whatWeBring.map((item, index) => (
+          {/* Hub-Spoke Design */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Mobile: Stacked Layout */}
+            <div className="md:hidden space-y-6">
+              {/* Center Circle - Mobile */}
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="flex-shrink-0 w-[300px] md:w-[350px] snap-start group"
+                className="flex justify-center mb-8"
               >
-                <div className="relative h-[400px] rounded-xl overflow-hidden cursor-pointer">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-                  
-                  {/* Default: Title visible */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300 group-hover:opacity-0">
-                    <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center mb-4">
-                      <span className="text-gold font-bold">{index + 1}</span>
-                    </div>
-                    <h3 className="text-xl font-display font-bold text-white">{item.title}</h3>
-                  </div>
-                  
-                  {/* On Hover: Full overlay with description */}
-                  <div className="absolute inset-0 bg-gold/90 p-6 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
-                      <span className="text-white font-bold text-lg">{index + 1}</span>
-                    </div>
-                    <h3 className="text-xl font-display font-bold text-white mb-4">{item.title}</h3>
-                    <p className="text-white/90 text-sm leading-relaxed">{item.description}</p>
+                <div className="w-48 h-48 rounded-full border-2 border-muted-foreground/30 flex items-center justify-center bg-background shadow-lg">
+                  <div className="text-center px-4">
+                    <p className="text-lg font-display">Why trust</p>
+                    <p className="text-2xl font-display font-bold text-gold">RYCCA</p>
+                    <p className="text-lg font-display">with your</p>
+                    <p className="text-lg font-display">Capital?</p>
                   </div>
                 </div>
               </motion.div>
-            ))}
+
+              {/* Cards - Mobile */}
+              {whatWeBring.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-background border border-muted-foreground/20 rounded-lg p-6"
+                >
+                  <h3 className="font-display font-bold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Desktop: Hub-Spoke Layout */}
+            <div className="hidden md:block relative min-h-[600px]">
+              {/* Center Circle */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+              >
+                <div className="w-52 h-52 rounded-full border-2 border-muted-foreground/30 flex items-center justify-center bg-background shadow-xl">
+                  <div className="text-center">
+                    <p className="text-xl font-display">Why trust</p>
+                    <p className="text-3xl font-display font-bold text-gold">RYCCA</p>
+                    <p className="text-xl font-display">with your</p>
+                    <p className="text-xl font-display">Capital?</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Connecting Lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
+                {/* Top Left Line */}
+                <motion.line
+                  x1="25%" y1="18%" x2="45%" y2="38%"
+                  stroke="currentColor" strokeWidth="1" className="text-muted-foreground/30"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }} viewport={{ once: true }}
+                />
+                {/* Top Right Line */}
+                <motion.line
+                  x1="75%" y1="18%" x2="55%" y2="38%"
+                  stroke="currentColor" strokeWidth="1" className="text-muted-foreground/30"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 }} viewport={{ once: true }}
+                />
+                {/* Bottom Left Line */}
+                <motion.line
+                  x1="15%" y1="65%" x2="42%" y2="55%"
+                  stroke="currentColor" strokeWidth="1" className="text-muted-foreground/30"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 0.8, delay: 0.5 }} viewport={{ once: true }}
+                />
+                {/* Bottom Right Line */}
+                <motion.line
+                  x1="85%" y1="65%" x2="58%" y2="55%"
+                  stroke="currentColor" strokeWidth="1" className="text-muted-foreground/30"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 0.8, delay: 0.6 }} viewport={{ once: true }}
+                />
+                {/* Bottom Center Line */}
+                <motion.line
+                  x1="50%" y1="90%" x2="50%" y2="70%"
+                  stroke="currentColor" strokeWidth="1" className="text-muted-foreground/30"
+                  initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 0.8, delay: 0.7 }} viewport={{ once: true }}
+                />
+              </svg>
+
+              {/* Top Left Card */}
+              <motion.div
+                initial={{ opacity: 0, x: -30, y: -30 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="absolute left-0 top-0 w-80 bg-background border border-muted-foreground/20 rounded-lg p-6 hover:shadow-lg transition-shadow"
+              >
+                <h3 className="font-display font-bold text-foreground mb-2">{whatWeBring[0].title}</h3>
+                <p className="text-sm text-muted-foreground">{whatWeBring[0].description}</p>
+              </motion.div>
+
+              {/* Top Right Card */}
+              <motion.div
+                initial={{ opacity: 0, x: 30, y: -30 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="absolute right-0 top-0 w-80 bg-background border border-muted-foreground/20 rounded-lg p-6 hover:shadow-lg transition-shadow"
+              >
+                <h3 className="font-display font-bold text-foreground mb-2">{whatWeBring[1].title}</h3>
+                <p className="text-sm text-muted-foreground">{whatWeBring[1].description}</p>
+              </motion.div>
+
+              {/* Bottom Left Card */}
+              <motion.div
+                initial={{ opacity: 0, x: -30, y: 30 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="absolute left-0 top-[55%] w-80 bg-background border border-muted-foreground/20 rounded-lg p-6 hover:shadow-lg transition-shadow"
+              >
+                <h3 className="font-display font-bold text-foreground mb-2">{whatWeBring[2].title}</h3>
+                <p className="text-sm text-muted-foreground">{whatWeBring[2].description}</p>
+              </motion.div>
+
+              {/* Bottom Right Card */}
+              <motion.div
+                initial={{ opacity: 0, x: 30, y: 30 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="absolute right-0 top-[55%] w-80 bg-background border border-muted-foreground/20 rounded-lg p-6 hover:shadow-lg transition-shadow"
+              >
+                <h3 className="font-display font-bold text-foreground mb-2">{whatWeBring[3].title}</h3>
+                <p className="text-sm text-muted-foreground">{whatWeBring[3].description}</p>
+              </motion.div>
+
+              {/* Bottom Center Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-80 bg-background border border-muted-foreground/20 rounded-lg p-6 hover:shadow-lg transition-shadow"
+              >
+                <h3 className="font-display font-bold text-foreground mb-2">{whatWeBring[4].title}</h3>
+                <p className="text-sm text-muted-foreground">{whatWeBring[4].description}</p>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
