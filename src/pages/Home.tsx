@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Target, TrendingUp, Lightbulb } from "lucide-react";
+import {
+  ArrowRight,
+  Target,
+  TrendingUp,
+  Lightbulb,
+  Building,
+} from "lucide-react";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-property.jpg";
@@ -37,13 +43,20 @@ const Home = () => {
       description:
         "Projects planned for long-term wealth creation and predictable execution",
     },
+    {
+      icon: Building,
+      title: "Market-Aligned Product Strategy",
+      description:
+        "Products designed around real demand, buyer psychology, and exit liquidity.",
+    },
   ];
 
   // 3rd Scroll - Track Record Stats
   const trackRecord = [
     { value: "400+", label: "Happy Families" },
     { value: "30+", label: "Years Experience" },
-    { value: "24%+", label: "Avg. ROI Delivered" },
+    // { value: "Consistent", label: "Value Growth" },
+    { value: "20.94%", label: "Straight line ROI" },
     { value: "100%", label: "A-Khata Projects" },
   ];
 
@@ -81,39 +94,60 @@ const Home = () => {
   // 5th Scroll - Our Approach (Timeline)
   const ourApproach = [
     {
-      title: "Market Scanning & Data Analysis",
+      title: "Selecting a locality",
       description:
-        "Find under-valued micro-markets with infrastructure growth potential.",
+        "Identify high-potential micro-markets with strong growth indicators.",
       color: "bg-blue-600",
     },
     {
-      title: "Land Acquisition after Due-Diligence",
-      description: "Title checks, compliance, regulatory audit.",
-      color: "bg-red-500",
-    },
-    {
-      title: "Master-Planning & Layout Design",
-      description:
-        "Optimized plot layouts with focus on livability and future demand.",
-      color: "bg-amber-400",
-    },
-    {
-      title: "Regulatory Approvals & Compliance",
-      description:
-        "Ensure all documentation (approval, khata, registration-ready) is in place.",
+      title: "Market Scan",
+      description: "Evaluate land value trends, feasibility, and competition.",
       color: "bg-orange-500",
     },
     {
-      title: "Investor-Ready Product Delivery",
+      title: "Short Listing Properties",
       description:
-        "Transparent pricing, clear documentation, open communication.",
-      color: "bg-green-500",
+        "Filter and finalize land parcels that meet our development criteria.",
+      color: "bg-green-600",
+    },
+    {
+      title: "Reconnaissance & Proposed Plans",
+      description: "Site visits, surveys, and preliminary concept planning.",
+      color: "bg-pink-600",
+    },
+    {
+      title: "Land Acquisition / JV After Due-Diligence",
+      description:
+        "Title checks, compliance review, and regulatory audit. Investor A entry: High risk, high returns, low capital.",
+      color: "bg-purple-600",
+    },
+    {
+      title: "Master Planning, Approvals & Layout Design",
+      description: "Theme-based master plan and all regulatory approvals.",
+      color: "bg-red-600",
+    },
+    {
+      title: "Landscaping & Sustainable Development",
+      description:
+        "Roads, utilities, green zones, and core development. Investor B entry: Medium risk, balanced returns.",
+      color: "bg-amber-500",
+    },
+    {
+      title: "Khata & Registration",
+      description: "Complete documentation and registration readiness.",
+      color: "bg-pink-500",
+    },
+    {
+      title: "End-User Product Delivery",
+      description:
+        "Clear documentation, amenities, and customer-ready plots. Investor C entry: Low risk, stable returns, higher capital.",
+      color: "bg-cyan-500",
     },
     {
       title: "Long-Term Value Support",
       description:
-        "Advisory on resale potential, investment horizon, and legal/transfer assistance.",
-      color: "bg-pink-600",
+        "Resale guidance, investment advisory, and transfer assistance.",
+      color: "bg-indigo-600",
     },
   ];
 
@@ -242,7 +276,7 @@ const Home = () => {
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border border-red-500">
             {valueProposition.map((item, index) => (
               <ScrollAnimation key={index} delay={index * 0.1} direction="up">
                 <div className="text-center p-8 rounded-lg bg-background hover:shadow-xl transition-shadow duration-300">
@@ -256,6 +290,33 @@ const Home = () => {
                 </div>
               </ScrollAnimation>
             ))}
+          </div> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {valueProposition.map((item, index) => {
+              const isLastItem = index === valueProposition.length - 1;
+
+              return (
+                <ScrollAnimation
+                  key={index}
+                  delay={index * 0.1}
+                  direction="up"
+                  className={isLastItem ? "md:col-start-2" : ""}
+                >
+                  <div className="text-center p-8 rounded-lg bg-background hover:shadow-xl transition-shadow duration-300">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 text-gold mb-6">
+                      <item.icon size={32} />
+                    </div>
+
+                    <h3 className="text-xl font-display font-semibold mb-3">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-muted-foreground">{item.description}</p>
+                  </div>
+                </ScrollAnimation>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -426,7 +487,7 @@ const Home = () => {
 
       {/* 5th Scroll - Our Approach */}
       <section className="py-20 bg-secondary overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center mb-4">
               <h2 className="text-4xl md:text-5xl font-display font-bold italic">
@@ -439,95 +500,150 @@ const Home = () => {
             </div>
           </ScrollAnimation>
 
-          {/* Timeline Container */}
-          <div className="relative mt-16">
-            {/* Steps above the line (1, 2, 3) */}
-            <div className="hidden md:grid grid-cols-6 gap-4 mb-8">
-              {ourApproach.slice(0, 3).map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: -30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.15 }}
-                  viewport={{ once: true }}
-                  className="col-span-2"
-                >
-                  <h3 className="text-lg font-display font-bold text-gold mb-2">
-                    {index + 1}. {step.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {step.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+          {/* Desktop Timeline - Alternating Pattern */}
+          <div className="hidden lg:block relative  w-full mx-auto">
+            {/* Timeline Line */}
+            <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2 h-1 bg-muted-foreground/30 z-0" />
 
-            {/* Timeline Line with Dots */}
-            <div className="relative hidden md:block">
-              <div className="absolute left-0 right-0 h-0.5 bg-muted-foreground/30 top-1/2 transform -translate-y-1/2" />
-              <div className="flex justify-between items-center relative">
-                {ourApproach.map((step, index) => (
+            {/* Timeline Wrapper with proper height */}
+            <div className="relative" style={{ height: "500px" }}>
+              {ourApproach.map((step, index) => {
+                const isAbove = index % 2 === 0;
+                // Better spacing calculation
+                const leftPosition = `${(index / (ourApproach.length - 1)) * 85}%`;
+
+                return (
                   <motion.div
                     key={index}
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    initial={{ opacity: 0, y: isAbove ? -30 : 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.08 }}
                     viewport={{ once: true }}
-                    className={`w-4 h-4 rounded-full ${step.color} z-10`}
-                  />
-                ))}
-              </div>
-            </div>
+                    className="absolute"
+                    style={{
+                      left: leftPosition,
+                      transform: "translateX(-50%)",
+                      width: isAbove ? "260px" : "240px",
+                      top: isAbove ? "60px" : "calc(50% + 50px)",
+                    }}
+                  >
+                    {/* Content Box */}
+                    <div className="bg-background border-2 border-muted rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-gold/50 min-h-[140px]">
+                      <h3 className="text-base font-display font-bold text-gold mb-2 leading-tight">
+                        {index + 1}. {step.title}
+                      </h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
 
-            {/* Steps below the line (4, 5, 6) */}
-            <div className="hidden md:grid grid-cols-6 gap-4 mt-8">
-              <div className="col-span-1" /> {/* Offset for alignment */}
-              {ourApproach.slice(3, 6).map((step, index) => (
-                <motion.div
-                  key={index + 3}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.15 }}
-                  viewport={{ once: true }}
-                  className="col-span-2"
-                >
-                  <h3 className="text-lg font-display font-bold text-gold mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {step.description}
-                  </p>
-                </motion.div>
-              ))}
-              <div className="col-span-1" /> {/* Offset for alignment */}
-            </div>
+                    {/* Connector Line from box to dot */}
+                    <div
+                      className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-muted-foreground/40"
+                      style={{
+                        [isAbove ? "top" : "bottom"]: "100%",
+                        height: isAbove ? "40px" : "40px",
+                      }}
+                    />
 
-            {/* Mobile: Vertical Timeline */}
-            <div className="md:hidden space-y-6">
+                    {/* Dot on Timeline */}
+                    <div
+                      className={`absolute left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full ${step.color} border-4 border-secondary z-10 shadow-md`}
+                      style={{
+                        [isAbove ? "top" : "bottom"]: isAbove
+                          ? "calc(100% + 40px)"
+                          : "calc(100% + 40px)",
+                      }}
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Tablet Timeline */}
+          <div className="hidden md:block lg:hidden relative mt-24 mb-24 max-w-5xl mx-auto px-6">
+            <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2 h-0.5 bg-muted-foreground/30 z-0" />
+
+            <div className="relative" style={{ height: "400px" }}>
+              {ourApproach.map((step, index) => {
+                const isAbove = index % 2 === 0;
+                const leftPosition = `${(index / (ourApproach.length - 1)) * 100}%`;
+
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: isAbove ? -20 : 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    viewport={{ once: true }}
+                    className="absolute"
+                    style={{
+                      left: leftPosition,
+                      transform: "translateX(-50%)",
+                      width: "140px",
+                      top: isAbove ? "0" : "calc(50% + 40px)",
+                    }}
+                  >
+                    <div className="bg-background border-2 border-muted rounded-xl p-3 shadow-md hover:shadow-lg transition-all duration-300 min-h-[110px]">
+                      <h3 className="text-xs font-display font-bold text-gold mb-1 leading-tight">
+                        {index + 1}. {step.title}
+                      </h3>
+                      <p className="text-[10px] text-muted-foreground leading-snug">
+                        {step.description}
+                      </p>
+                    </div>
+
+                    <div
+                      className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-muted-foreground/40"
+                      style={{
+                        [isAbove ? "top" : "bottom"]: "100%",
+                        height: "30px",
+                      }}
+                    />
+
+                    <div
+                      className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full ${step.color} border-3 border-secondary z-10`}
+                      style={{
+                        [isAbove ? "top" : "bottom"]: isAbove
+                          ? "calc(100% + 30px)"
+                          : "calc(100% + 30px)",
+                      }}
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Mobile: Vertical Timeline */}
+          <div className="md:hidden mt-12 max-w-md mx-auto">
+            <div className="space-y-6">
               {ourApproach.map((step, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
                   viewport={{ once: true }}
                   className="flex gap-4"
                 >
                   <div className="flex flex-col items-center">
                     <div
-                      className={`w-4 h-4 rounded-full ${step.color} flex-shrink-0`}
+                      className={`w-5 h-5 rounded-full ${step.color} flex-shrink-0 border-4 border-secondary shadow-md`}
                     />
                     {index < ourApproach.length - 1 && (
                       <div className="w-0.5 h-full bg-muted-foreground/30 mt-2" />
                     )}
                   </div>
-                  <div className="pb-6">
-                    <h3 className="text-lg font-display font-bold text-gold mb-1">
+                  <div className="pb-6 flex-1">
+                    <h3 className="text-base font-display font-bold text-gold mb-2">
                       {index + 1}. {step.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {step.description}
                     </p>
+                    {/* Investor Entry Points for Mobile */}
                   </div>
                 </motion.div>
               ))}

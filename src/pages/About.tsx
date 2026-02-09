@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import {
   Target,
@@ -7,8 +7,17 @@ import {
   Award,
   ChevronLeft,
   ChevronRight,
+  FileCheck,
+  ShieldCheck,
+  FileText,
+  Leaf,
+  LineChart,
 } from "lucide-react";
 import aboutTeam from "@/assets/about-team.jpg";
+import dimple from "/Dimple.png";
+import Mehraram from "/Mehraram.png";
+import NitinMR from "/NitinMR.png";
+import heroImage from "@/assets/hero-property.jpg";
 
 const About = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -38,22 +47,60 @@ const About = () => {
 
   const leadership = [
     {
-      name: "Mr. John Joe",
+      name: "Mehraram",
       role: "Managing Director",
-      image: aboutTeam,
+      image: Mehraram,
       bgColor: "bg-blue-200",
     },
     {
-      name: "Mr. John Joe",
+      name: "Nitin MR",
       role: "Managing Director",
-      image: aboutTeam,
+      image: NitinMR,
       bgColor: "bg-amber-200",
     },
     {
-      name: "Mr. John Joe",
+      name: "Dimple",
       role: "Managing Director",
-      image: aboutTeam,
+      image: dimple,
       bgColor: "bg-pink-200",
+    },
+  ];
+
+  const whatMakesUsDifferent = [
+    {
+      title: "Research-first acquisition",
+      description:
+        "Every land parcel undergoes rigorous due diligence before acquisition, analyzing growth corridors, infrastructure development, and appreciation potential.",
+      image:
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
+    },
+    {
+      title: "Compliance-led development",
+      description:
+        "We prioritize 100% regulatory compliance including RERA, BMRDA, A-Khata approvals ensuring hassle-free ownership experience.",
+      image:
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80",
+    },
+    {
+      title: "Investor-education-led sales",
+      description:
+        "We don't just sell plots—we educate investors about location logic, growth indicators, and long-term value creation strategies.",
+      image:
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+    },
+    {
+      title: "Generational-value projects",
+      description:
+        "Projects designed not just for immediate returns but for creating lasting wealth that can be passed down through generations.",
+      image:
+        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",
+    },
+    {
+      title: "Slow, thoughtful rollout",
+      description:
+        "We prioritize quality over speed, ensuring every detail is perfected before project delivery for maximum value realization.",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
     },
   ];
 
@@ -88,22 +135,40 @@ const About = () => {
   // 5th Scroll - Value Proposition for Investors
   const investorValueProposition = [
     {
-      icon: Target,
-      title: "Strategic Location Value",
+      icon: FileCheck,
+      title: "Clear Title & Approvals",
       description:
-        "Infrastructure pipeline and growth indicators carefully analyzed for maximum appreciation potential",
+        "Fully approved plots with clear titles, ready for registration and immediate ownership transfer",
     },
     {
       icon: TrendingUp,
-      title: "Intelligent Planning",
+      title: "Realistic Appreciation",
       description:
-        "Research-first acquisition with value-focused zoning and land-use optimization",
+        "Data-backed growth potential based on location, infrastructure planning, and market demand",
     },
     {
-      icon: Award,
-      title: "Value-Per-Risk Ratio",
+      icon: ShieldCheck,
+      title: "Low-Risk Investment",
       description:
-        "Projects planned for long-term wealth creation with predictable execution timelines",
+        "Legally compliant projects designed to minimize risk with complete regulatory clarity",
+    },
+    {
+      icon: FileText,
+      title: "Transparent Process",
+      description:
+        "End-to-end documentation transparency with no hidden clauses or unexpected surprises",
+    },
+    {
+      icon: Leaf,
+      title: "Long-Term Wealth Creation",
+      description:
+        "Land assets positioned for legacy value, resale opportunities, and passive appreciation",
+    },
+    {
+      icon: LineChart,
+      title: "Sustainable Growth",
+      description:
+        "Projects aligned with long-term development plans ensuring steady, linear value growth",
     },
   ];
 
@@ -143,9 +208,67 @@ const About = () => {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      {/* Vision Section - 2 Column Layout */}
+      {/* Hero Section with Banner Image */}
+      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt="About Rycca Ventures"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6">
+              About <span className="text-gold">Rycca Ventures</span>
+            </h1>
+            <p className="text-2xl md:text-3xl font-display text-gold mt-4">
+              Where clarity meets long-term capital growth.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Tab Navigation */}
+      <section className="sticky top-0 z-40 bg-background mt-5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center gap-4 py-6">
+            <a
+              href="#about-section"
+              className={`px-8 py-3 font-display font-bold rounded-full transition-all bg-secondary text-muted-foreground hover:bg-primary hover:text-white`}
+            >
+              About Rycca
+            </a>
+            <a
+              href="#leadership-section"
+              className={`px-8 py-3 font-display font-bold rounded-full transition-all bg-secondary text-muted-foreground hover:bg-primary hover:text-white`}
+            >
+              Leadership
+            </a>
+            <a
+              href="#investor-section"
+              className={`px-8 py-3 font-display font-bold rounded-full transition-all bg-secondary text-muted-foreground hover:bg-primary hover:text-white`}
+            >
+              Investor
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Vision Section - 3 Column Layout */}
-      <section className="py-0 bg-background overflow-hidden">
+      <section
+        className="py-0 bg-background overflow-hidden relative mt-20"
+        id="about-section"
+      >
+        {/* Gradient Fade Overlay at Top */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background via-background/80 to-transparent z-10 pointer-events-none" />
+
         <div className="grid grid-cols-1 lg:grid-cols-3">
           {/* Column 1: VISION Text with Shadow (Mobile: appears first) */}
           <ScrollAnimation direction="left">
@@ -209,7 +332,10 @@ const About = () => {
       </section>
 
       {/* Mission Section - 3 Column Layout (Reversed) */}
-      <section className="py-0 bg-background overflow-hidden">
+      <section
+        className="py-0 bg-background overflow-hidden"
+        id="mission-section"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-3">
           {/* Column 1: Content (Mobile: appears third, Desktop: appears first) */}
           <ScrollAnimation direction="left">
@@ -275,8 +401,53 @@ const About = () => {
         </div>
       </section>
 
-      {/* 3rd Scroll - Leadership */}
-      <section className="py-20 bg-background overflow-hidden">
+      {/* 3th Scroll - Team & Experience */}
+      <section className="py-20 bg-secondary" id="team-experience-section">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Team & <span className="text-gold">Experience</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Over three decades of building trust and creating value
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6">
+              {milestones.map((milestone, index) => (
+                <ScrollAnimation key={index} delay={index * 0.1} direction="up">
+                  <div className="flex gap-6 p-6 bg-background rounded-lg hover:shadow-lg transition-all duration-300">
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center">
+                        <span className="text-gold font-bold text-lg">
+                          {milestone.year}
+                        </span>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-display font-bold mb-2">
+                        {milestone.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {milestone.description}
+                      </p>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4rd Scroll - Leadership */}
+      <section
+        className="py-20 bg-background overflow-hidden"
+        id="leadership-section"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center mb-6">
@@ -343,7 +514,7 @@ const About = () => {
                       <motion.img
                         src={leader.image}
                         alt={leader.name}
-                        className="relative z-10 w-64 h-80 object-cover object-top"
+                        className="relative z-10 w-64 h-80 object-cover object-top rounded-lg"
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
                       />
@@ -368,50 +539,93 @@ const About = () => {
         </div>
       </section>
 
-      {/* 4th Scroll - Team & Experience */}
+      {/* What Makes Us Different - Horizontal Card Scroller */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-                Team & <span className="text-gold">Experience</span>
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Over three decades of building trust and creating value
-              </p>
+            <div className="flex items-center justify-between mb-12">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                  What Makes Us <span className="text-gold">Different</span>
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl">
+                  Five principles that define the Rycca approach
+                </p>
+              </div>
+              <div className="hidden md:flex gap-2">
+                <button
+                  onClick={() => scroll("left")}
+                  className="p-3 rounded-full bg-background border border-gold/20 hover:border-gold/60 transition-colors"
+                  aria-label="Scroll left"
+                >
+                  <ChevronLeft className="w-6 h-6 text-gold" />
+                </button>
+                <button
+                  onClick={() => scroll("right")}
+                  className="p-3 rounded-full bg-background border border-gold/20 hover:border-gold/60 transition-colors"
+                  aria-label="Scroll right"
+                >
+                  <ChevronRight className="w-6 h-6 text-gold" />
+                </button>
+              </div>
             </div>
           </ScrollAnimation>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-6">
-              {milestones.map((milestone, index) => (
-                <ScrollAnimation key={index} delay={index * 0.1} direction="up">
-                  <div className="flex gap-6 p-6 bg-background rounded-lg hover:shadow-lg transition-all duration-300">
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center">
-                        <span className="text-gold font-bold text-lg">
-                          {milestone.year}
-                        </span>
-                      </div>
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {whatMakesUsDifferent.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex-shrink-0 w-[300px] md:w-[350px] snap-start group"
+              >
+                <div className="relative h-[400px] rounded-xl overflow-hidden cursor-pointer">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+
+                  {/* Default: Title visible */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 transition-all duration-300 group-hover:opacity-0">
+                    <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center mb-4">
+                      <span className="text-gold font-bold">{index + 1}</span>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-display font-bold mb-2">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {milestone.description}
-                      </p>
-                    </div>
+                    <h3 className="text-xl font-display font-bold text-white">
+                      {item.title}
+                    </h3>
                   </div>
-                </ScrollAnimation>
-              ))}
-            </div>
+
+                  {/* On Hover: Full overlay with description */}
+                  <div className="absolute inset-0 bg-gold/90 p-6 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
+                      <span className="text-white font-bold text-lg">
+                        {index + 1}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-display font-bold text-white mb-4">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/90 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* 5th Scroll - Value Proposition for Investors */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background" id="investor-section">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center mb-16">
@@ -447,7 +661,7 @@ const About = () => {
       <section className="py-20 bg-secondary overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-center mb-16 italic">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-center  italic">
               WHAT WE BRING ON THE{" "}
               <span className="text-foreground">TABLE</span>
             </h2>
@@ -606,7 +820,7 @@ const About = () => {
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="absolute left-0 top-0 w-80 bg-background border border-muted-foreground/20 rounded-lg p-6 hover:shadow-lg transition-shadow"
+                className="absolute left-16 top-32 w-80 bg-background border border-muted-foreground/20 rounded-lg p-6 hover:shadow-lg transition-shadow"
                 style={{ zIndex: 5 }}
               >
                 <h3 className="font-display font-bold text-foreground mb-2">
@@ -623,7 +837,7 @@ const About = () => {
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="absolute right-0 top-0 w-80 bg-background border border-muted-foreground/20 rounded-lg p-6 hover:shadow-lg transition-shadow"
+                className="absolute right-20 top-20 w-80 bg-background border border-muted-foreground/20 rounded-lg p-6 hover:shadow-lg transition-shadow"
                 style={{ zIndex: 5 }}
               >
                 <h3 className="font-display font-bold text-foreground mb-2">
