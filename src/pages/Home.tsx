@@ -310,17 +310,19 @@ const Home = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           {/* YouTube Video Background */}
-          <iframe
-            src="https://www.youtube.com/embed/acMrEM7nlX8?autoplay=1&mute=1&loop=1&playlist=acMrEM7nlX8&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&widgetid=1&vq=hd1080"
-            title="Hero Background Video"
-            allow="autoplay; encrypted-media"
-            className="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            style={{
-              minWidth: "100vw",
-              minHeight: "100vh",
-              objectFit: "cover",
-            }}
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source
+              src="https://res.cloudinary.com/dgdh8odrt/video/upload/f_auto,q_auto,vc_auto/main-video-builder_qr6w5y"
+              type="video/mp4"
+            />
+          </video>
 
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
