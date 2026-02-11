@@ -7,6 +7,7 @@ import metroInfraImage from "@/assets/blog-metro-infrastructure.jpg";
 import investmentGrowthImage from "@/assets/blog-investment-growth.jpg";
 import blogReraGuide from "@/assets/blog-rera-guide.jpg";
 import blogNorthBangalore from "@/assets/blog-north-bangalore.jpg";
+import coming from "@/assets/coming.png";
 
 // Related posts data with proper images
 const relatedPosts = [
@@ -101,7 +102,10 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-display font-bold mb-4">Post Not Found</h1>
+         <div className="flex justify-center items-center w-[80%] sm:w-1/3 m-auto mt-10 mb-5">
+           <img src={coming} alt="img"  className="rounded-lg" />
+         </div>
+          {/* <h1 className="text-4xl font-display font-bold mb-4">Coming soon...</h1> */}
           <Link to="/blog" className="text-gold hover:underline">
             ← Back to Blog
           </Link>

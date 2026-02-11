@@ -48,19 +48,19 @@ const About = () => {
   const leadership = [
     {
       name: "Mehraram",
-      role: "Managing Director",
+      role: "Managing Principal & Proprietor",
       image: Mehraram,
       bgColor: "bg-blue-200",
     },
     {
       name: "Nitin MR",
-      role: "Managing Director",
+      role: "Operating Principal - Strategy & Growth",
       image: NitinMR,
       bgColor: "bg-amber-200",
     },
     {
       name: "Dimple",
-      role: "Managing Director",
+      role: "Chief Architect & Project Manager",
       image: dimple,
       bgColor: "bg-pink-200",
     },

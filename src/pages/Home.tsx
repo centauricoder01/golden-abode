@@ -6,13 +6,184 @@ import {
   TrendingUp,
   Lightbulb,
   Building,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-property.jpg";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import project1 from "@/assets/1.png";
+import first from "@/assets/1.png";
+import second from "@/assets/2.png";
+import third from "@/assets/3.png";
+import fourth from "@/assets/4.png";
+import fifth from "@/assets/5.png";
+import React from "react";
+
+const ProjectCard = ({ project, images }) => {
+  const projectImages = project.isBlurred ? [project.image] : images;
+  const [activeIdx, setActiveIdx] = React.useState(0);
+  const [tStart, setTStart] = React.useState(null);
+  const [tEnd, setTEnd] = React.useState(null);
+
+  const nextSlide = () =>
+    setActiveIdx((prev) => (prev + 1) % projectImages.length);
+  const prevSlide = () =>
+    setActiveIdx(
+      (prev) => (prev - 1 + projectImages.length) % projectImages.length,
+    );
+
+  React.useEffect(() => {
+    if (project.isBlurred) return;
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [activeIdx, project.isBlurred]);
+
+  const onTouchStart = (e) => setTStart(e.targetTouches[0].clientX);
+  const onTouchMove = (e) => setTEnd(e.targetTouches[0].clientX);
+  const onTouchEnd = () => {
+    if (!tStart || !tEnd) return;
+    const dist = tStart - tEnd;
+    if (Math.abs(dist) > 50) {
+      dist > 0 ? nextSlide() : prevSlide();
+    }
+    setTStart(null);
+    setTEnd(null);
+  };
+
+  return (
+    <Link to={`/projects`} className="group block">
+      <div
+        className="relative overflow-hidden rounded-2xl lg:rounded-3xl shadow-2xl h-[500px] sm:h-[600px] lg:h-[700px]"
+        onTouchStart={!project.isBlurred ? onTouchStart : undefined}
+        onTouchMove={!project.isBlurred ? onTouchMove : undefined}
+        onTouchEnd={!project.isBlurred ? onTouchEnd : undefined}
+      >
+        {projectImages.map((img, idx) => (
+          <img
+            key={idx}
+            src={img}
+            alt={`${project.title} ${idx + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
+              idx === activeIdx
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-105"
+            } ${project.isBlurred ? "blur-sm brightness-75" : ""}`}
+          />
+        ))}
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
+
+        {project.isBlurred && (
+          <div className="absolute inset-0 flex items-center justify-center z-20">
+            <span className="text-white text-xl sm:text-2xl lg:text-3xl font-display font-bold bg-black/60 backdrop-blur-sm px-6 py-3 sm:px-8 sm:py-4 rounded-full border-2 border-white/30">
+              Coming Soon
+            </span>
+          </div>
+        )}
+
+        {/* {!project.isBlurred && projectImages.length > 1 && (
+          <>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                prevSlide();
+              }}
+              className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white rounded-full p-2 sm:p-3 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                nextSlide();
+              }}
+              className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white rounded-full p-2 sm:p-3 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+            </button>
+          </>
+        )} */}
+
+        {!project.isBlurred && projectImages.length > 1 && (
+          <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+            {projectImages.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setActiveIdx(idx);
+                }}
+                className={`rounded-full transition-all duration-300 ${
+                  idx === activeIdx
+                    ? "w-8 sm:w-10 h-2.5 sm:h-3 bg-gold"
+                    : "w-2.5 sm:w-3 h-2.5 sm:h-3 bg-white/50 hover:bg-white/70"
+                }`}
+                aria-label={`Go to image ${idx + 1}`}
+              />
+            ))}
+          </div>
+        )}
+
+        <div className="absolute inset-0 p-6 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-between z-10">
+          <div>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-white mb-3 sm:mb-4 leading-tight">
+              {project.title}
+            </h3>
+            <div className="flex items-center gap-2 text-white/90 text-base sm:text-lg lg:text-xl">
+              <span>📍</span>
+              <span>{project.location}</span>
+            </div>
+            {project.hasVideo && !project.isBlurred && (
+              <div className="mt-4 inline-block">
+                <span className="bg-gold/90 backdrop-blur-sm text-white text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full flex items-center gap-2 w-fit">
+                  <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                  Walkthrough Available
+                </span>
+              </div>
+            )}
+          </div>
+
+          <div className="space-y-3 sm:space-y-4">
+            {/* {!project.isBlurred && projectImages.length > 1 && (
+              <div className="flex justify-end mb-2">
+                <span className="bg-black/40 backdrop-blur-sm text-white text-xs sm:text-sm px-3 py-1 rounded-full">
+                  {activeIdx + 1} / {projectImages.length}
+                </span>
+              </div>
+            )} */}
+            <div>
+              <span
+                className={`inline-block px-4 py-1.5 sm:px-6 sm:py-2 text-sm sm:text-base font-bold rounded-full ${
+                  project.status === "Now Selling"
+                    ? "bg-gold text-white"
+                    : "bg-white/20 backdrop-blur-sm text-white border border-white/30"
+                }`}
+              >
+                {project.status}
+              </span>
+            </div>
+            {!project.isBlurred && (
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <Button
+                  className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-foreground group-hover:border-white transition-all duration-300 w-full sm:w-auto"
+                  size="lg"
+                >
+                  View Details
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+};
 
 const Home = () => {
   // 1st Scroll - Who We Are
@@ -64,31 +235,13 @@ const Home = () => {
   const projects = [
     {
       id: 1,
-      title: "Silicon Fairworth – Phase 1",
+      title: "Bengaluru Luxury Living",
       location: "Doddaballapura, Bangalore",
       image: project1,
       status: "Now Selling",
       isBlurred: false,
       hasVideo: true,
     },
-    // {
-    //   id: 2,
-    //   title: "Silicon Fairworth – Phase 2",
-    //   location: "Doddaballapura, Bangalore",
-    //   image: project2,
-    //   status: "Coming Soon",
-    //   isBlurred: true,
-    //   hasVideo: false,
-    // },
-    // {
-    //   id: 3,
-    //   title: "Upcoming Project",
-    //   location: "North Bangalore",
-    //   image: project3,
-    //   status: "Coming Soon",
-    //   isBlurred: true,
-    //   hasVideo: false,
-    // },
   ];
 
   // 5th Scroll - Our Approach (Timeline)
@@ -156,23 +309,20 @@ const Home = () => {
       {/* Hero Section - Investor POV */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source
-              src="https://santhusta.in/media/images/banner/banner-video2.mp4"
-              type="video/mp4"
-            />
-            <img
-              src={heroImage}
-              alt="Luxury Property"
-              className="w-full h-full object-cover"
-            />
-          </video>
+          {/* YouTube Video Background */}
+          <iframe
+            src="https://www.youtube.com/embed/acMrEM7nlX8?autoplay=1&mute=1&loop=1&playlist=acMrEM7nlX8&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&widgetid=1&vq=hd1080"
+            title="Hero Background Video"
+            allow="autoplay; encrypted-media"
+            className="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            style={{
+              minWidth: "100vw",
+              minHeight: "100vh",
+              objectFit: "cover",
+            }}
+          />
+
+          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
 
@@ -242,7 +392,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* 1st Scroll - Who We Are */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -388,83 +537,10 @@ const Home = () => {
                 delay={index * 0.15}
                 direction="up"
               >
-                <Link to={`/projects`} className="group block">
-                  <div className="relative overflow-hidden rounded-2xl lg:rounded-3xl shadow-2xl h-[500px] sm:h-[600px] lg:h-[700px]">
-                    {/* Background Image */}
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${
-                        project.isBlurred ? "blur-sm brightness-75" : ""
-                      }`}
-                    />
-
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
-
-                    {/* Coming Soon Overlay */}
-                    {project.isBlurred && (
-                      <div className="absolute inset-0 flex items-center justify-center z-20">
-                        <span className="text-white text-xl sm:text-2xl lg:text-3xl font-display font-bold bg-black/60 backdrop-blur-sm px-6 py-3 sm:px-8 sm:py-4 rounded-full border-2 border-white/30">
-                          Coming Soon
-                        </span>
-                      </div>
-                    )}
-
-                    {/* Content Overlay */}
-                    <div className="absolute inset-0 p-6 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-between">
-                      {/* Top Section - Title & Location */}
-                      <div>
-                        <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-white mb-3 sm:mb-4 leading-tight">
-                          {project.title}
-                        </h3>
-                        <div className="flex items-center gap-2 text-white/90 text-base sm:text-lg lg:text-xl">
-                          <span>📍</span>
-                          <span>{project.location}</span>
-                        </div>
-
-                        {/* Walkthrough Badge */}
-                        {project.hasVideo && !project.isBlurred && (
-                          <div className="mt-4 inline-block">
-                            <span className="bg-gold/90 backdrop-blur-sm text-white text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full flex items-center gap-2 w-fit">
-                              <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                              Walkthrough Available
-                            </span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Bottom Section - Status & CTA */}
-                      <div className="space-y-3 sm:space-y-4">
-                        {/* Status Badge */}
-                        <div>
-                          <span
-                            className={`inline-block px-4 py-1.5 sm:px-6 sm:py-2 text-sm sm:text-base font-bold rounded-full ${
-                              project.status === "Now Selling"
-                                ? "bg-gold text-white"
-                                : "bg-white/20 backdrop-blur-sm text-white border border-white/30"
-                            }`}
-                          >
-                            {project.status}
-                          </span>
-                        </div>
-
-                        {/* Visit Button */}
-                        {!project.isBlurred && (
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                            <Button
-                              className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-foreground group-hover:border-white transition-all duration-300 w-full sm:w-auto"
-                              size="lg"
-                            >
-                              View Details
-                              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
-                            </Button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+                <ProjectCard
+                  project={project}
+                  images={[first, second, third, fourth, fifth]}
+                />
               </ScrollAnimation>
             ))}
           </div>
@@ -674,14 +750,14 @@ const Home = () => {
                     Book a Consultation
                   </Button>
                 </Link>
-                <Link to="/projects">
+                {/* <Link to="/projects">
                   <Button
                     size="lg"
                     className="bg-white text-gold hover:bg-white/90"
                   >
                     Download Brochure
                   </Button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </ScrollAnimation>
