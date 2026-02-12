@@ -6,18 +6,33 @@ import {
   TrendingUp,
   Lightbulb,
   Building,
-  ChevronLeft,
-  ChevronRight,
+  Calendar,
+  MapPin,
 } from "lucide-react";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
 import project1 from "@/assets/1.png";
+import { Badge } from "@/components/ui/badge";
+import React from "react";
+
+// new project Image
 import first from "@/assets/1.png";
 import second from "@/assets/2.png";
 import third from "@/assets/3.png";
 import fourth from "@/assets/4.png";
 import fifth from "@/assets/5.png";
-import React from "react";
+
+// bill site image
+import bill1 from "@/assets/bill1.jpg";
+import bill2 from "@/assets/bill2.png";
+import bill3 from "@/assets/bill3.png";
+import bill4 from "@/assets/bill4.png";
+import bill5 from "@/assets/bill5.png";
+
+import nela1 from "@/assets/nela1.png";
+import nela2 from "@/assets/nela2.png";
+import nela3 from "@/assets/nela3.jpg";
+import nela4 from "@/assets/nela4.png";
 
 const ProjectCard = ({ project, images }) => {
   const projectImages = project.isBlurred ? [project.image] : images;
@@ -183,6 +198,175 @@ const ProjectCard = ({ project, images }) => {
       </div>
     </Link>
   );
+};
+
+const PastProjectCard = ({ project }) => {
+  const images = Array.isArray(project.image) ? project.image : [project.image];
+  const [activeIdx, setActiveIdx] = React.useState(0);
+  const [tStart, setTStart] = React.useState(null);
+  const [tEnd, setTEnd] = React.useState(null);
+
+  // Auto-advance carousel
+  React.useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  const nextSlide = () => setActiveIdx((prev) => (prev + 1) % images.length);
+  const prevSlide = () =>
+    setActiveIdx((prev) => (prev - 1 + images.length) % images.length);
+
+  const onTouchStart = (e) => setTStart(e.targetTouches[0].clientX);
+  const onTouchMove = (e) => setTEnd(e.targetTouches[0].clientX);
+  const onTouchEnd = () => {
+    if (!tStart || !tEnd) return;
+    const dist = tStart - tEnd;
+    if (Math.abs(dist) > 50) dist > 0 ? nextSlide() : prevSlide();
+    setTStart(null);
+    setTEnd(null);
+  };
+
+  return (
+    <div className="bg-secondary rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+      {/* Carousel Image Container */}
+      <div
+        className="relative h-64 overflow-hidden"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {images.map((img, idx) => (
+          <img
+            key={idx}
+            src={img}
+            alt={`${project.title} ${idx + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out
+              ${idx === activeIdx ? "opacity-100 scale-100" : "opacity-0 scale-105"}
+            `}
+          />
+        ))}
+
+        {/* ROI Badge */}
+        <div className="absolute bottom-4 left-4 z-10">
+          <Badge className="bg-gold text-white border-0 text-lg px-4 py-2 font-bold">
+            {project.roi} ROI
+          </Badge>
+        </div>
+
+        {/* Status Badge */}
+        <div className="absolute top-4 right-4 z-10">
+          <Badge
+            className={`${getStatusColor(project.status)} text-white border-0 font-bold`}
+          >
+            {project.status}
+          </Badge>
+        </div>
+
+        {/* Dot Indicators */}
+        {images.length > 1 && (
+          <div className="absolute bottom-4 right-4 z-10 flex gap-1.5">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIdx(idx)}
+                className={`rounded-full transition-all duration-300 ${
+                  idx === activeIdx
+                    ? "w-6 h-2 bg-gold"
+                    : "w-2 h-2 bg-white/60 hover:bg-white/90"
+                }`}
+                aria-label={`Go to image ${idx + 1}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Card Content */}
+      <div className="p-6">
+        <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
+          <div className="flex items-center gap-1">
+            <Calendar size={14} />
+            <span>{project.year}</span>
+          </div>
+          <span>•</span>
+          <div className="flex items-center gap-1">
+            <MapPin size={14} />
+            <span>{project.location}</span>
+          </div>
+        </div>
+        <h3 className="text-2xl font-display font-bold mb-2">
+          {project.title}
+        </h3>
+        <p className="text-muted-foreground text-sm mb-4">
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {project.highlights.map((highlight, idx) => (
+            <Badge
+              key={idx}
+              variant="outline"
+              className="border-gold/30 text-xs"
+            >
+              {highlight}
+            </Badge>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const pastProjects = [
+  {
+    id: 2,
+    title: "Nelamangala Layout",
+    year: "2013",
+    location: "Nelamangala, Bangalore",
+    type: "Residential Layout",
+    status: "Completed",
+    image: [nela1, nela2, nela3, nela4],
+    description:
+      "Our first developer project through a joint venture. Today, 20+ happy families reside here.",
+    highlights: [
+      "20+ Happy Families",
+      "20.94% Straight-line ROI",
+      "A-Khata Approved",
+    ],
+    roi: "20.94%",
+  },
+  {
+    id: 3,
+    title: "Premium 1-Acre Layout",
+    year: "2020",
+    location: "North Bangalore",
+    type: "Premium Residential",
+    status: "Completed",
+    image: [bill1, bill2, bill3, bill4, bill5],
+    description:
+      "A premium residential layout featuring doubly reinforced concrete roads and underground systems.",
+    highlights: [
+      "Doubly Reinforced Roads",
+      "23.33% Straight-line ROI",
+      "Premium Positioning",
+    ],
+    roi: "23.33%",
+  },
+];
+
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case "Completed":
+      return "bg-green-500";
+    case "Now Selling":
+      return "bg-gold";
+    case "Pre-Launch":
+      return "bg-blue-500";
+    default:
+      return "bg-gray-500";
+  }
 };
 
 const Home = () => {
@@ -560,6 +744,111 @@ const Home = () => {
               </Link>
             </div>
           </ScrollAnimation>
+        </div>
+      </section>
+
+      {/* <section className="py-10 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Proven <span className="text-gold">Track Record</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Successfully delivered projects with consistent ROI
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            {pastProjects.map((project, index) => (
+              <ScrollAnimation
+                key={project.id}
+                delay={index * 0.1}
+                direction="up"
+              >
+                <div className="bg-secondary rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
+                  <div className="relative h-64">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <Badge
+                        className={`${getStatusColor(project.status)} text-white border-0 font-bold`}
+                      >
+                        {project.status}
+                      </Badge>
+                    </div>
+                    <div className="absolute bottom-4 left-4">
+                      <Badge className="bg-gold text-white border-0 text-lg px-4 py-2 font-bold">
+                        {project.roi} ROI
+                      </Badge>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
+                      <div className="flex items-center gap-1">
+                        <Calendar size={14} />
+                        <span>{project.year}</span>
+                      </div>
+                      <span>•</span>
+                      <div className="flex items-center gap-1">
+                        <MapPin size={14} />
+                        <span>{project.location}</span>
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-display font-bold mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.highlights.map((highlight, idx) => (
+                        <Badge
+                          key={idx}
+                          variant="outline"
+                          className="border-gold/30 text-xs"
+                        >
+                          {highlight}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* Past Projects Section with Carousel */}
+      <section className="py-10 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Proven <span className="text-gold">Track Record</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Successfully delivered projects with consistent ROI
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            {pastProjects.map((project, index) => (
+              <ScrollAnimation
+                key={project.id}
+                delay={index * 0.1}
+                direction="up"
+              >
+                <PastProjectCard project={project} />
+              </ScrollAnimation>
+            ))}
+          </div>
         </div>
       </section>
 
