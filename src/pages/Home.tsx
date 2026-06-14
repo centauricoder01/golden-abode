@@ -503,7 +503,7 @@ const Home = () => {
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source
-              src="https://res.cloudinary.com/dgdh8odrt/video/upload/f_auto,q_auto,vc_auto/main-video-builder_qr6w5y"
+              src="https://res.cloudinary.com/dgdh8odrt/video/upload/f_auto,q_auto,vc_auto/main-video-builder_qr6w5y_ufwxdq"
               type="video/mp4"
             />
           </video>
